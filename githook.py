@@ -6,10 +6,6 @@ import git
 
 app = Flask(__name__)
 
-# config = {
-#     "nadirspace" : "~/develop/nadirspace",
-#     "discbots" :
-# }
 
 @app.route('/hooks',methods=['POST'])
 def hook():
