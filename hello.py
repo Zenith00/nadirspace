@@ -2,13 +2,13 @@ import json
 # from urllib import request
 import ipaddress
 import requests
-from flask import Flask, abort, request
-
-app = Flask(__name__)
+# from flask import Flask, abort, request
+import flask
+app = flask.Flask(__name__)
 
 @app.route("/")
 def hello ():
-    return "Helloadawdwadaw World!"
+    return flask.render_template('index.html')
 
 
 if __name__ == "__main__":
