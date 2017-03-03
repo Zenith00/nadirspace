@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 @app.route('/hooks',methods=['POST'])
 def hook():
+    print("Hook Recieved")
     request_ip = ipaddress.ip_address(u'{0}'.format(request.remote_addr))
     hook_blocks = requests.get('https://api.github.com/meta').json()['hooks']
 
@@ -26,7 +27,6 @@ def hook():
     g = git.cmd.Git("~/develop/" + repo_name)
     g.pull()
     # print "New commit by: {}".format(data['commits'][0]['author']['name'])
-    return "OK"
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port="4200")
