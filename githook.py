@@ -12,7 +12,6 @@ def hook():
     print("Hook Recieved")
     request_ip = ipaddress.ip_address(u'{0}'.format(request.remote_addr))
     hook_blocks = requests.get('https://api.github.com/meta').json()['hooks']
-
     for block in hook_blocks:
         if ipaddress.ip_address(request_ip) in ipaddress.ip_network(block):
             break
