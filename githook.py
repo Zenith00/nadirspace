@@ -3,7 +3,7 @@ import ipaddress
 import requests
 from flask import Flask, abort, request
 import git
-
+import os
 app = Flask(__name__)
 
 
@@ -19,7 +19,7 @@ def hook():
         abort(403)
     data = json.loads(request.data)
     repo_name = data["repository"]["name"]
-    g = git.cmd.Git("~/develop/" + repo_name)
+    g = git.cmd.Git(os.path.expanduser("~/develop/" + repo_name))
     g.pull()
     # print "New commit by: {}".format(data['commits'][0]['author']['name'])
 
