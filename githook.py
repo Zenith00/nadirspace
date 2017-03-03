@@ -21,7 +21,7 @@ def hook():
     repo_name = data["repository"]["name"]
     g = git.cmd.Git(os.path.expanduser("~/develop/" + repo_name))
     g.pull()
-    return "Done"
+    return "OK"
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port="4200")
