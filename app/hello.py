@@ -8,6 +8,7 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def hello():
+    print("Recieved")
     return flask.render_template('index.html')
 
 
