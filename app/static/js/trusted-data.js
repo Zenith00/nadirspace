@@ -28,6 +28,7 @@ function drawChart(response) {
         'hAxis': {
             'format': 'MM/dd'
         }, 'vAxis': {
+            'title':'Words',
             'format': 'decimal',
             'gridlines': {
                 'count': -1
