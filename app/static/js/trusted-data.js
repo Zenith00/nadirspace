@@ -26,8 +26,16 @@ function drawChart(response) {
     var options = {
         'title': 'Trusteds',
         'hAxis': {
-            format: 'MM/dd'
-        }, 'explorer': {}
+            'format': 'MM/dd'
+        }, 'vAxis': {
+            'format': 'decimal',
+            'gridlines': {
+                'count': -1
+            }
+        },
+        'explorer': {},
+        'focusTarget': 'category'
+
     };
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
     // chart = new google.visualization.ChartWrapper();
@@ -48,7 +56,7 @@ function drawChart(response) {
     var lineChart = new google.visualization.ChartWrapper({
         'chartType': 'LineChart',
         'containerId': 'chart_div',
-        'options':options
+        'options': options
     });
     var dateslider = new google.visualization.ControlWrapper({
         'controlType': 'DateRangeFilter',
@@ -81,12 +89,12 @@ function drawChart(response) {
                     };
                     console.log(data.getColumnType(col));
                     // grey out the legend entry
-                    series[col-1].color = '#CCCCCC';
+                    series[col - 1].color = '#CCCCCC';
                 }
                 else {
                     // show the data series
                     columns[col] = col;
-                    series[col-1].color = null;
+                    series[col - 1].color = null;
                 }
                 console.log(columns);
                 console.log(series);
@@ -94,8 +102,8 @@ function drawChart(response) {
                 // view.setColumns(columns);
                 // chart.draw(view, options);
                 // lineChart.setOption('series', series);
-                lineChart.setView({'columns':columns});
-                lineChart.setOptions({'series':series});
+                lineChart.setView({'columns': columns});
+                lineChart.setOptions({'series': series});
                 // lineChart = new google.visualization.ChartWrapper({
                 //     'chartType': 'LineChart',
                 //     'containerId': 'chart_div',
