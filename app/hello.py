@@ -9,8 +9,12 @@ app = flask.Flask(__name__)
 @app.route("/")
 def hello():
     print("Recieved")
-    return flask.render_template('index.html')
+    return "lol"
+    # return flask.render_template('index.html')
 
+@app.route("/tchat")
+def tchat():
+    return flask.render_template('trusted-data.html')
 
 
 if __name__ == "__main__":
