@@ -72,7 +72,6 @@ function drawChart(response) {
             // if row is undefined, we clicked on the legend
             if (sel[0].row === null) {
                 var col = sel[0].column;
-
                 if (columns[col] == col) {
                     // hide the data series
                     columns[col] = {
