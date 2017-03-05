@@ -47,11 +47,7 @@ function drawChart(response) {
     // series[data.getNumberOfColumns()] = {};
     var lineChart = new google.visualization.ChartWrapper({
         'chartType': 'LineChart',
-        'containerId': 'chart_div',
-        'options': {
-            'width': "100vh",
-            'height': 800
-        }
+        'containerId': 'chart_div'
     });
     var dateslider = new google.visualization.ControlWrapper({
         'controlType': 'DateRangeFilter',
