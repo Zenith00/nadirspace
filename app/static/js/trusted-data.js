@@ -47,7 +47,8 @@ function drawChart(response) {
     // series[data.getNumberOfColumns()] = {};
     var lineChart = new google.visualization.ChartWrapper({
         'chartType': 'LineChart',
-        'containerId': 'chart_div'
+        'containerId': 'chart_div',
+        'options':options
     });
     var dateslider = new google.visualization.ControlWrapper({
         'controlType': 'DateRangeFilter',
