@@ -23,21 +23,7 @@ function drawChart(response) {
     // ]);'
     var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div'));
     var data = response.getDataTable();
-    var options = {
-        'title': 'Trusteds',
-        'hAxis': {
-            'format': 'MM/dd'
-        }, 'vAxis': {
-            'title':'Words',
-            'format': 'decimal',
-            'gridlines': {
-                'count': -1
-            }
-        },
-        'explorer': {},
-        'focusTarget': 'category'
 
-    };
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
     // chart = new google.visualization.ChartWrapper();
     // chart.setDataTable(data);
@@ -54,6 +40,22 @@ function drawChart(response) {
         }
     }
     // series[data.getNumberOfColumns()] = {};
+    var options = {
+        'title': 'Trusteds',
+        'hAxis': {
+            'format': 'MM/dd'
+        }, 'vAxis': {
+            'title':'Words',
+            'format': 'decimal',
+            'gridlines': {
+                'count': -1
+            }
+        },
+        'explorer': {},
+        'focusTarget': 'category',
+        'series':series
+
+    };
     var lineChart = new google.visualization.ChartWrapper({
         'chartType': 'LineChart',
         'containerId': 'chart_div',
@@ -104,7 +106,7 @@ function drawChart(response) {
                 // chart.draw(view, options);
                 // lineChart.setOption('series', series);
                 lineChart.setView({'columns': columns});
-                lineChart.setOptions({'series': series});
+                lineChart.setOptions(options);
                 // lineChart = new google.visualization.ChartWrapper({
                 //     'chartType': 'LineChart',
                 //     'containerId': 'chart_div',
