@@ -28,7 +28,7 @@ function drawChart(response) {
     var columns = [];
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
-        if (i==0){
+        if (i == 0) {
             columns.push(i)
         } else {
             columns.push({
@@ -41,7 +41,7 @@ function drawChart(response) {
         }
 
         if (i > 0) {
-            series[i - 1] = {color:'#CCCCCC'};
+            series[i - 1] = {color: '#CCCCCC'};
         }
     }
     // series[data.getNumberOfColumns()] = {};
@@ -66,6 +66,8 @@ function drawChart(response) {
         'containerId': 'chart_div',
         'options': options
     });
+    lineChart.setView({'columns': columns});
+    lineChart.setOptions(options);
     var dateslider = new google.visualization.ControlWrapper({
         'controlType': 'DateRangeFilter',
         'containerId': 'filter_div',
