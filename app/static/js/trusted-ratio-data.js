@@ -51,7 +51,7 @@ function drawChart(response) {
         'hAxis': {
             'format': 'MM/dd'
         }, 'vAxis': {
-            'title': 'Words',
+            'title': 'Ratio',
             'format': 'decimal',
             'gridlines': {
                 'count': -1
