@@ -29,8 +29,8 @@ function drawChart(response) {
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
         columns.push({
-                        type: data.getColumnType(col),
-                        label: data.getColumnLabel(col),
+                        type: data.getColumnType(i),
+                        label: data.getColumnLabel(i),
                         calc: function (dataTable, row) {
                             return null;
                         }
