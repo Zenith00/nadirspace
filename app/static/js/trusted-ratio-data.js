@@ -28,13 +28,7 @@ function drawChart(response) {
     var columns = [];
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
-        columns.push({
-                        type: data.getColumnType(i),
-                        label: data.getColumnLabel(i),
-                        calc: function (dataTable, row) {
-                            return null;
-                        }
-                    });
+        columns.push(i);
         if (i > 0) {
             series[i - 1] = {};
         }
