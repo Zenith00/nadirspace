@@ -7,7 +7,7 @@ function initialize() {
     var opts = {
         sendMethod: "auto"
     };
-    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1huPKkJacTFqZizQ4Yd6Eo1QmfwjngWNOXnwt_0E-fBg/edit#gid=0', opts);
+    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1huPKkJacTFqZizQ4Yd6Eo1QmfwjngWNOXnwt_0E-fBg/edit#gid=2104713486', opts);
     query.setQuery("select *");
     query.send(drawChart);
 }

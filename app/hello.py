@@ -16,6 +16,9 @@ def hello():
 def tchat():
     return flask.render_template('trusted-data.html')
 
+@app.route("/tchat-ratio")
+def tchat_ratio():
+    return flask.render_template('trusted-ratio-data.html')
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port="5000")
