@@ -4,13 +4,16 @@ var teleOp = 2*60+15
 var goal = 14;
 var time = 2*60+15;
 
+var timer = false
 
 
 function incGear(){
     gearCount = gearCount + 1;
 //    document.getElementById("timer").innerHTML = gearCount + autonGears;
-    var myVar = setInterval(incTimer, 1000);
-
+    if (!timer){
+        setInterval(incTimer, 1000);
+        timer = true;
+    }
 
 }
 
