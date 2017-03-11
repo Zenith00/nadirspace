@@ -9,7 +9,7 @@ var time = 0;
 
 function incGear(){
     gearCount = gearCount + 1;
-    document.getElementById("incGear").value = gearCount + autonGears;
+    document.getElementById("timer").innerHTML = gearCount + autonGears;
 
 }
 
