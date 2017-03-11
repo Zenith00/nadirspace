@@ -23,7 +23,7 @@ function incTimer(){
     var minutes = Math.floor(time / 60);
     var seconds = time - minutes * 60;
     var speedGoal = (goal - autonGears) / teleOp;
-    var speedCurrent = (gearCount - autonGears) / (teleOp - seconds)
+    var speedCurrent = (gearCount - autonGears) / (seconds)
 
     console.log(speedCurrent)
     if (speedCurrent < speedGoal){
