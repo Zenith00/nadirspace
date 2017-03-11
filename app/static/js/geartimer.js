@@ -27,9 +27,9 @@ function incTimer(){
 
     console.log(speedCurrent)
     if (speedCurrent < speedGoal){
-        document.getElementById("gearProj").value = "On Target"
+        document.getElementById("gearProj").innerHTML = "On Target"
     } else {
-        document.getElementById("gearProj").value = "Off Target"
+        document.getElementById("gearProj").innerHTML = "Off Target"
 
     }
 
