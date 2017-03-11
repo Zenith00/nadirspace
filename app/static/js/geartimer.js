@@ -2,7 +2,7 @@ var gearCount = 0;
 var autonGears = 0;
 var teleOp = 215
 var goal = 14;
-var myVar = setInterval(myTimer, 1000);
+var myVar = setInterval(incTimer, 1000);
 var time = 0;
 
 
