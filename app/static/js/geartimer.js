@@ -18,13 +18,14 @@ function incAuton(){
 }
 
 function incTimer(){
+    console.log("Timer")
     time = time + 1;
     var minutes = Math.floor(time / 60);
     var seconds = time - minutes * 60;
     var speedGoal = (goal - autonGears) / teleOp;
     var speedCurrent = (gearCount - autonGears) / (teleOp - seconds)
 
-
+    console.log(speedCurrent)
     if (speedCurrent < speedGoal){
         document.getElementById("gearProj").value = "On Target"
     } else {
