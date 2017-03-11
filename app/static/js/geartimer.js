@@ -30,7 +30,7 @@ function incTimer(){
     document.getElementById("timer").innerHTML = String(minutes) + ":" + String(seconds)
 
     var speedGoal = (goal - autonGears) / teleOp;
-    var speedCurrent = (gearCount - autonGears) / (seconds)
+    var speedCurrent = (gearCount) / (teleOp - time)
 
     console.log(speedCurrent)
     if (speedCurrent > speedGoal){
