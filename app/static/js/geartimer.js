@@ -36,7 +36,7 @@ function incTimer(){
         document.getElementById("gearProj").innerHTML = "Off Target"
     }
     document.getElementById("currentSpeed").innerHTML = "Current rate: " + String(speedCurrent*teleOp) + " gears per round"
-    document.getElementById("currentSpeed").innerHTML = "Required rate for 12: " + String((goal-gearCount-autonGears)/time) + " gears per round"
+    document.getElementById("necessarySpeed").innerHTML = "Required rate for 12: " + String((goal-gearCount-autonGears)/time) + " gears per round"
 
 
 
