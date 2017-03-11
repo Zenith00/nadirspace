@@ -3,7 +3,7 @@ var autonGears = 0;
 var teleOp = 215
 var goal = 14;
 var myVar = setInterval(myTimer, 1000);
-
+var time = 0;
 
 
 
@@ -18,10 +18,11 @@ function incAuton(){
 }
 
 function incTimer(){
+    time = time + 1;
     var minutes = Math.floor(time / 60);
     var seconds = time - minutes * 60;
     var speedGoal = (goal - autonGears) / teleOp;
-    var speedCurrent = (gearCount - autonGears)
+    var speedCurrent = (gearCount - autonGears) / (teleOp - seconds)
 
 
     if (speedCurrent < speedGoal){
@@ -30,6 +31,7 @@ function incTimer(){
         document.getElementById("gearProj").value = "Off Target"
 
     }
+
 
 
 }
