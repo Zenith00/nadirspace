@@ -28,21 +28,20 @@ function drawChart(response) {
     var columns = [];
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
-        // if (i == 0) {
-            columns.push(i);
-        // } else {
-        //     columns.push({
-        //         type: data.getColumnType(i),
-        //         label: data.getColumnLabel(i),
-        //         calc: function (dataTable, row) {
-        //             return null;
-        //         }
-        //     });
-        // }
+        if (i == 0) {
+            columns.push(i)
+        } else {
+            columns.push({
+                type: data.getColumnType(i),
+                label: data.getColumnLabel(i),
+                calc: function (dataTable, row) {
+                    return null;
+                }
+            });
+        }
 
         if (i > 0) {
-            // series[i - 1] = {color: '#CCCCCC'};
-            series[i - 1] = {};
+            series[i - 1] = {color: '#CCCCCC'};
         }
     }
     // series[data.getNumberOfColumns()] = {};
@@ -51,7 +50,7 @@ function drawChart(response) {
         'hAxis': {
             'format': 'MM/dd'
         }, 'vAxis': {
-            'title': 'Ratio',
+            'title': 'Words',
             'format': 'decimal',
             'gridlines': {
                 'count': -1
