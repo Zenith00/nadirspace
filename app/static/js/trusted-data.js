@@ -70,7 +70,7 @@ function drawChart(response) {
     });
     dashboard.bind(dateslider, lineChart);
     dashboard.draw(data);
-    lineChart.setView({'columns': columns});
+    lineChart.setView({'columns': columns, 'series':series});
     lineChart.setOptions(options);
     lineChart.draw();
     google.visualization.events.addListener(lineChart, 'select', function () {
@@ -98,7 +98,7 @@ function drawChart(response) {
                     series[col - 1].color = null;
                 }
 
-                lineChart.setView({'columns': columns});
+                lineChart.setView({'columns': columns, 'series':series});
                 lineChart.setOptions(options);
 
 
