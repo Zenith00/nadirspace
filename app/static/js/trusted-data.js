@@ -29,15 +29,15 @@ function drawChart(response) {
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
         if (i == 0) {
-            columns.push(i)
-        } else {
-            columns.push({
-                type: data.getColumnType(i),
-                label: data.getColumnLabel(i),
-                calc: function (dataTable, row) {
-                    return null;
-                }
-            });
+            columns.push(i);
+        // } else {
+        //     columns.push({
+        //         type: data.getColumnType(i),
+        //         label: data.getColumnLabel(i),
+        //         calc: function (dataTable, row) {
+        //             return null;
+        //         }
+        //     });
         }
 
         if (i > 0) {
