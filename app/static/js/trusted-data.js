@@ -16,7 +16,7 @@ function drawChart(response) {
 
     var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div'));
     var data = response.getDataTable();
-    
+
     var columns = [];
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
@@ -30,7 +30,7 @@ function drawChart(response) {
         //             return null;
         //         }
         //     });
-        }
+        // }
 
         if (i > 0) {
             // series[i - 1] = {color: '#CCCCCC'};
