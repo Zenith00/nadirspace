@@ -20,6 +20,10 @@ def tchat():
 def tchat_ratio():
     return flask.render_template('trusted-ratio-data.html')
 
+@app.route("/gear")
+def gear():
+    return flask.render_template('geartimer.html')
+
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port="5000")
 
