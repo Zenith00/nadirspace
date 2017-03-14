@@ -7,7 +7,7 @@ function initialize() {
     var opts = {
         sendMethod: "auto"
     };
-    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1huPKkJacTFqZizQ4Yd6Eo1QmfwjngWNOXnwt_0E-fBg/gviz/tq?sheet=N-TChat%20%5BRatio%5D', opts);
+    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1huPKkJacTFqZizQ4Yd6Eo1QmfwjngWNOXnwt_0E-fBg/gviz/tq?sheet=Main', opts);
     query.setQuery("select *");
     query.send(drawChart);
 }
