@@ -70,7 +70,9 @@ function drawChart(response) {
     });
     dashboard.bind(dateslider, lineChart);
     dashboard.draw(data);
-
+    lineChart.setView({'columns': columns});
+    lineChart.setOptions(options);
+    lineChart.draw();
     google.visualization.events.addListener(lineChart, 'select', function () {
         console.log("logged");
         var sel = lineChart.getChart().getSelection();
