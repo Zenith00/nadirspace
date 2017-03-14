@@ -13,18 +13,10 @@ function initialize() {
 }
 
 function drawChart(response) {
-    // var data = google.visualization.arrayToDataTable([
-    //     ['Year', 'Sales', 'Expenses'],
-    //     ['2004', 1000, 400],
-    //     ['2005', 1170, 460],
-    //     ['2006', 660, 1120],
-    //     ['2007', 1030, 540]
-    // ]);'
+
     var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div'));
     var data = response.getDataTable();
-
-    // var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
+    
     var columns = [];
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
@@ -45,7 +37,6 @@ function drawChart(response) {
             series[i - 1] = {};
         }
     }
-    // series[data.getNumberOfColumns()] = {};
     var options = {
         'title': 'Trusteds',
         'hAxis': {
