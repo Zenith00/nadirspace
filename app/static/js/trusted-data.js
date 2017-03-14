@@ -36,7 +36,7 @@ function drawChart(response) {
                         }
                     });
         if (i > 0) {
-            series[i - 1] = {};
+            series[i - 1] = {color : '#CCCCCC'};
         }
     }
     // series[data.getNumberOfColumns()] = {};
