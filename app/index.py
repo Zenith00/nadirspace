@@ -25,8 +25,8 @@ def before_request():
 @app.route("/")
 def hello():
     print("Recieved")
-    # return "lol"
-    return flask.render_template('index.html')
+    return "Bip Bop. Working!"
+    # return flask.render_template('index.html')
 
 @app.route("/tchat")
 def tchat():
