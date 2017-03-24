@@ -28,14 +28,17 @@ def hello():
 
 @app.route("/tchat")
 def tchat():
+    print("Recieved")
     return flask.render_template('trusted-data.html')
 
 @app.route("/tchat-ratio")
 def tchat_ratio():
+    print("Recieved")
     return flask.render_template('trusted-ratio-data.html')
 
 @app.route("/gear")
 def gear():
+    print("Recieved")
     return flask.render_template('geartimer.html')
 
 @run_with_reloader
@@ -44,8 +47,11 @@ def run_server():
 
     # app.run(host="0.0.0.0", port="80")
 
-    http_server = WSGIServer(('', 5000),  app)
-    http_server.serve_forever()
+    server = WSGIServer(('', 5000),  app)
+    print("Run2")
+    server.serve_forever()
 
-run_server()
+
+if __name__ == '__main__':
+    run_server()
 #test
