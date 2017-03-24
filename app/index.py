@@ -5,6 +5,8 @@ import requests
 # from flask import Flask, abort, request
 import flask
 from gevent.wsgi import WSGIServer
+from gevent import monkey
+monkey.patch_all()
 app = flask.Flask(__name__)
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
