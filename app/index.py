@@ -4,7 +4,9 @@ import ipaddress
 import requests
 # from flask import Flask, abort, request
 import flask
+from gevent.wsgi import WSGIServer
 app = flask.Flask(__name__)
+
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route("/")
@@ -26,7 +28,9 @@ def gear():
     return flask.render_template('geartimer.html')
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", port="80")
+  # app.run(host="0.0.0.0", port="80")
+  http_server = WSGIServer(('', 80), app)
+  http_server.serve_forever()
 
 
 #test
