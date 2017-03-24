@@ -12,7 +12,7 @@ from gevent.wsgi import WSGIServer
 
 app = flask.Flask(__name__)
 
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+# app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route("/")
 def hello():
@@ -39,7 +39,6 @@ def run_server():
 
     http_server = WSGIServer(('', 5000),  app)
     http_server.serve_forever()
-
 
 run_server()
 #test
