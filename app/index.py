@@ -8,6 +8,8 @@ monkey.patch_all()
 import flask
 from werkzeug.serving import run_with_reloader
 from werkzeug.debug import DebuggedApplication
+
+
 from gevent.wsgi import WSGIServer
 
 app = flask.Flask(__name__)
@@ -46,12 +48,12 @@ def run_server():
     print("Running...")
 
     # app.run(host="0.0.0.0", port="80")
-
-    server = WSGIServer(('', 5000),  app)
+    server = WSGIServer(('127.0.0.1', 8000),  app)
     print("Run2")
     server.serve_forever()
 
 
 if __name__ == '__main__':
     run_server()
+
 #test
