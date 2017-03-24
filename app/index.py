@@ -30,9 +30,10 @@ def gear():
     return flask.render_template('geartimer.html')
 
 if __name__ == "__main__":
-  # app.run(host="0.0.0.0", port="80")
-  http_server = WSGIServer(('', 8000), app)
-  http_server.serve_forever()
+    print("Running...")
+    # app.run(host="0.0.0.0", port="80")
+    http_server = WSGIServer(('', 8000), app)
+    http_server.serve_forever()
 
 
 #test
