@@ -41,7 +41,9 @@ def gear():
 @run_with_reloader
 def run_server():
     print("Running...")
+
     # app.run(host="0.0.0.0", port="80")
+
     http_server = WSGIServer(('', 5000),  app)
     http_server.serve_forever()
 
