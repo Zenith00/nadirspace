@@ -11,6 +11,7 @@ from werkzeug.debug import DebuggedApplication
 from gevent.wsgi import WSGIServer
 
 app = flask.Flask(__name__)
+app.debug = True
 
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
 
