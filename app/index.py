@@ -17,8 +17,8 @@ app = flask.Flask(__name__)
 @app.route("/")
 def hello():
     print("Recieved")
-    return "lol"
-    # return flask.render_template('index.html')
+    # return "lol"
+    return flask.render_template('index.html')
 
 @app.route("/tchat")
 def tchat():
