@@ -5,6 +5,7 @@ import requests
 # from flask import Flask, abort, request
 import flask
 app = flask.Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route("/")
 def hello():
