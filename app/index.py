@@ -32,7 +32,7 @@ def tchat_ratio():
 def gear():
     yield flask.render_template('geartimer.html')
 
-@run_with_reloader()
+@run_with_reloader
 def run_server():
     print("Running...")
     # app.run(host="0.0.0.0", port="80")
