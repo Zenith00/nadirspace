@@ -32,7 +32,7 @@ def gear():
 if __name__ == "__main__":
     print("Running...")
     # app.run(host="0.0.0.0", port="80")
-    http_server = WSGIServer(('', 8000), app)
+    http_server = WSGIServer(('0.0.0.0', 8000), app)
     http_server.serve_forever()
 
 
