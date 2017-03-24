@@ -48,7 +48,7 @@ def run_server():
     print("Running...")
 
     # app.run(host="0.0.0.0", port="80")
-    server = WSGIServer(('127.0.0.1', 5000),  app)
+    server = WSGIServer(('0.0.0.0', 5000),  app)
     print("Run2")
     server.serve_forever()
 
