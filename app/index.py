@@ -15,6 +15,11 @@ app.debug = True
 
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+@app.before_request
+def before_request():
+    print('before request')
+
+
 @app.route("/")
 def hello():
     print("Recieved")
@@ -37,7 +42,6 @@ def gear():
 def run_server():
     print("Running...")
     # app.run(host="0.0.0.0", port="80")
-
     http_server = WSGIServer(('', 5000),  app)
     http_server.serve_forever()
 
