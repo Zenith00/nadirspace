@@ -17,26 +17,27 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route("/")
 def hello():
     print("Recieved")
-    yield "lol"
+    return "lol"
     # return flask.render_template('index.html')
 
 @app.route("/tchat")
 def tchat():
-    yield flask.render_template('trusted-data.html')
+    return flask.render_template('trusted-data.html')
 
 @app.route("/tchat-ratio")
 def tchat_ratio():
-    yield flask.render_template('trusted-ratio-data.html')
+    return flask.render_template('trusted-ratio-data.html')
 
 @app.route("/gear")
 def gear():
-    yield flask.render_template('geartimer.html')
+    return flask.render_template('geartimer.html')
 
 @run_with_reloader
 def run_server():
     print("Running...")
     # app.run(host="0.0.0.0", port="80")
-    http_server = WSGIServer(('', 5000),  DebuggedApplication(app))
+
+    http_server = WSGIServer(('', 5000),  app)
     http_server.serve_forever()
 
 
