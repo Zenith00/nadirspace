@@ -69,6 +69,7 @@ def logger():
                 follow_file.seek(0, 2)
                 line = follow_file.readline()
                 print("Checking for line..")
+                print(line)
                 if line:
                     print("Line")
                     line = escape(line)
