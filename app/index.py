@@ -82,7 +82,7 @@ def logger():
         while True:
             try:
                 next_line = tail.next()
-                print(next_line)
+                # print(next_line)
                 yield "data: {}\n\n".format(next_line)
             except:
                 print("Nothing Found")
