@@ -65,7 +65,9 @@ def logger():
     follow_file.seek(0, 2)
     def logStream():
         line = follow_file.readline()
+        print("Checking for line..")
         if line:
+            print("Line")
             line = escape(line)
             yield line
     return Response(logStream(), mimetype="text/event-stream")
