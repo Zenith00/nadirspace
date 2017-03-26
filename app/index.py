@@ -77,11 +77,11 @@ def logger():
             #     else:
             #         time.sleep(0.1)
             #         continue
-    try:
-        for line in sh.tail("-f", LOG_FILE, _iter=True):
-            yield line
-    except:
-        yield None
+        try:
+            for line in sh.tail("-f", LOG_FILE, _iter=True):
+                yield line
+        except:
+            yield None
     return Response(logStream(), mimetype="text/event-stream")
 
 
