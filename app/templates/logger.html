@@ -27,8 +27,8 @@
     {#        $data.append($('<p/>').text(data));#}
     {#        $data.scrollTop($data[0].scrollHeight);#}
     {#    });#}
-    var $status = $('#status')
-    var $data = $('#data')
+    var $status = $('#status');
+    var $data = $('#data');
 
     var source = new EventSource('/logger');
     source.addEventListener('message', function (data) {
