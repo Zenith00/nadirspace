@@ -89,7 +89,7 @@ def logger():
             try:
                 yield tail.next()
             except:
-                yield None
+                time.sleep(0.1)
         # while True:
         #     try:
         #         for line in sh.tail("-f", LOG_FILE, _iter=True):
