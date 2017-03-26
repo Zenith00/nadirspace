@@ -14,7 +14,7 @@
         <div id="status" class="red">Disconnected</div>
         <div id="data">
             {% for line in log_buffer %}
-                <p data-toxicity="{{ line[1:5]}}" >{{ line }}</p>
+                <p data-toxicity="{{line[1:5]}}" channel="{{line.split('][')[2]}}"> {{ line }}</p>
             {% endfor %}
         </div>
     </div>
@@ -43,8 +43,8 @@
 {#        console.log(e.data);#}
 {#        console.log("test");#}
         var toxic = e.data.substring(1,5);
-        console.log(toxic)
-        $data.append($('<p/>').attr("data-toxicity",toxic).text(e.data));
+        console.log(toxic);
+        $data.append($('<p/>').attr("data-toxicity",toxic).attr("channel",e.data.split("][")[2]).text(e.data));
         $data.find("p:first").remove();
         $data.scrollTop($data[0].scrollHeight);
         window.scrollTo(0, document.body.scrollHeight);
