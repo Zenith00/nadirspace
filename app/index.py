@@ -84,11 +84,11 @@ def index():
 @app.route('/logger')
 def logger():
     tail = sh.tail("-f", LOG_FILE, _iter=True)
-    while True:
-        try:
-            sse.publish({"message":tail.next()}, type="log")
-        except:
-            time.sleep(0.1)
+    # while True:
+    try:
+        sse.publish({"message":tail.next()}, type="log")
+    except:
+        time.sleep(0.1)
     return "Message Found"
     # def logStream():
     #     import sh
