@@ -76,7 +76,6 @@ def gear():
 
 @app.route('/logs')
 def index():
-
     with open(LOG_FILE, 'r') as f:
         log_buffer = f.readlines()
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])

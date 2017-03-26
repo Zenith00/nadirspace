@@ -39,8 +39,8 @@
 {#        }, false);#}
     source.onmessage = function (e) {
         console.log(e.data);
-        console.log("test");
-        $data.append($('<p/>').text(data));
+{#        console.log("test");#}
+        $data.append($('<p/>').text(e.data));
         $data.scrollTop($data[0].scrollHeight);
     };
     source.addEventListener('open', function () {
