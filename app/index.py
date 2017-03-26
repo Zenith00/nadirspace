@@ -23,6 +23,7 @@ app.debug = True
 @app.before_request
 def before_request():
     print('before request')
+    return
 
 
 @app.route("/")
@@ -75,6 +76,7 @@ def run_server():
     server = WSGIServer(('0.0.0.0', 5000),  app)
     jobs = [gevent.spawn(follow, open(LOG_FILE)),
             gevent.spawn(http_server.serve_forever)]
+    gevent.joinall(jobs)
     print("Run2")
     # server.serve_forever()
 
