@@ -42,7 +42,9 @@
     source.onmessage = function (e) {
 {#        console.log(e.data);#}
 {#        console.log("test");#}
-        $data.append($('<p/>').text(e.data));
+        var toxic = e.data.substring(1,4);
+
+        $data.append($('<p/>').text(e.data)).attr("data-toxicity",toxic);
         $data.find("p:first").remove();
         $data.scrollTop($data[0].scrollHeight);
         window.scrollTo(0, document.body.scrollHeight);
