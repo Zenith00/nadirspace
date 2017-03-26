@@ -72,8 +72,14 @@ def logger():
                     yield line
             except:
                 print(traceback.format_exc())
+                print("None")
                 time.sleep(0.1)
                 yield None
+    # def generate():
+    #     with open('job.log') as f:
+    #         while True:
+    #             yield f.read()
+    #             time.sleep(1)
     return Response(logStream(), mimetype="text/event-stream")
 
 
