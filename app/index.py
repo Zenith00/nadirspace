@@ -89,6 +89,7 @@ def logger():
             sse.publish({"message":tail.next()}, type="log")
         except:
             time.sleep(0.1)
+    return "Message Found"
     # def logStream():
     #     import sh
     #     tail = sh.tail("-f", LOG_FILE, _iter=True)
