@@ -89,6 +89,7 @@ def logger():
             try:
                 yield tail.next()
             except:
+                print("Nothing Found")
                 time.sleep(0.1)
         # while True:
         #     try:
