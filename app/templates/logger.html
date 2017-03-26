@@ -31,10 +31,15 @@
     var $data = $('#data');
 
     var source = new EventSource('/logger');
-    source.addEventListener('message', function (data) {
+{#    source.addEventListener('message', function (data) {#}
+{#        $data.append($('<p/>').text(data));#}
+{#        $data.scrollTop($data[0].scrollHeight);#}
+{#    });#}
+    source.onmessage = function(e) {
+        console.log(e.data);
         $data.append($('<p/>').text(data));
         $data.scrollTop($data[0].scrollHeight);
-    });
+    };
     source.addEventListener('open', function (e) {
         $status.removeClass('red');
         $status.text('Connected');
