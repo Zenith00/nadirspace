@@ -14,7 +14,7 @@
         <div id="status" class="red">Disconnected</div>
         <div id="data">
             {% for line in log_buffer %}
-                <p>{{ line }}</p>
+                <p data-toxicity="{{ line[1:5]}}" >{{ line }}</p>
             {% endfor %}
         </div>
     </div>
