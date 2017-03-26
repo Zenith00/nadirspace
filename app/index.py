@@ -20,6 +20,7 @@ jug = Juggernaut()
 from flask import escape
 import time
 from gevent.wsgi import WSGIServer
+
 # from utils import utils_text, utils_file
 
 class Unbuffered(object):
@@ -42,7 +43,7 @@ sys.stdout = Unbuffered(sys.stdout)
 app = flask.Flask(__name__)
 app.debug = True
 app.register_blueprint(sse, url_prefix="/logger")
-
+app.config["REDIS_URL"] = "redis://localhost"
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
 LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
 MAX_LEN = -500
