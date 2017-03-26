@@ -63,15 +63,16 @@ def index():
 def logger():
 
     def logStream():
-        with open(LOG_FILE, "r") as follow_file:
-            # follow_file = open(LOG_FILE)
-            follow_file.seek(0, 2)
-            line = follow_file.readline()
-            print("Checking for line..")
-            if line:
-                print("Line")
-                line = escape(line)
-                yield line
+        while True:
+            with open(LOG_FILE, "r") as follow_file:
+                # follow_file = open(LOG_FILE)
+                follow_file.seek(0, 2)
+                line = follow_file.readline()
+                print("Checking for line..")
+                if line:
+                    print("Line")
+                    line = escape(line)
+                    yield line
     return Response(logStream(), mimetype="text/event-stream")
 
 
