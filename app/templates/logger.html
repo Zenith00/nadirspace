@@ -31,9 +31,9 @@
     var $data = $('#data');
 
     var source = new EventSource('/logger');
-        source.addEventListener('message', function (data) {
+        source.addEventListener('log', function (data) {
 {#            var data = JSON.parse(event.data);#}
-            console.log(data)
+            console.log(data);
             $data.append($('<p/>').text(data));
             $data.scrollTop($data[0].scrollHeight);
         });

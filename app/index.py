@@ -82,14 +82,16 @@ def index():
 
 
 @app.route('/logger')
-def logger():
-    tail = sh.tail("-f", LOG_FILE, _iter=True)
-    # while True:
-    try:
-        sse.publish({"message":tail.next()}, type="log")
-    except:
-        time.sleep(0.1)
-    return "Message Found"
+def logger(follow_file):
+
+    follow_file.seek(0, 2)
+    while True:
+        line = follow_file.readline()
+        if not line:
+            time.sleep(0.1)
+            continue
+        line = escape(line)
+        sse.publish({"message":line}, type="log")
     # def logStream():
     #     import sh
     #     tail = sh.tail("-f", LOG_FILE, _iter=True)
@@ -123,8 +125,8 @@ def run_server():
     app.wsgi_app = ProxyFix(app.wsgi_app)
     # app.run(host="0.0.0.0", port="80")
     http_server = WSGIServer(('0.0.0.0', 5000),  app)
-    # jobs = [gevent.spawn(follow, open(LOG_FILE)),
-    #         gevent.spawn(http_server.serve_forever)]
+    jobs = [gevent.spawn(logger, open(LOG_FILE)),
+            gevent.spawn(http_server.serve_forever)]
     http_server.serve_forever()
     print("Run2")
     # server.serve_forever()
