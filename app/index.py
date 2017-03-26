@@ -61,9 +61,10 @@ def index():
 
 @app.route('/logger')
 def logger():
-    follow_file = open(LOG_FILE)
-    follow_file.seek(0, 2)
+
     def logStream():
+        follow_file = open(LOG_FILE)
+        follow_file.seek(0, 2)
         line = follow_file.readline()
         print("Checking for line..")
         if line:
