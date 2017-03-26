@@ -31,11 +31,11 @@
     var $data = $('#data');
 
     var source = new EventSource('/logger');
-{#    source.addEventListener('message', function (data) {#}
-{#        $data.append($('<p/>').text(data));#}
-{#        $data.scrollTop($data[0].scrollHeight);#}
-{#    });#}
-    source.onmessage = function(e) {
+    {#    source.addEventListener('message', function (data) {#}
+    {#        $data.append($('<p/>').text(data));#}
+    {#        $data.scrollTop($data[0].scrollHeight);#}
+    {#    });#}
+    source.onmessage = function (e) {
         console.log(e.data);
         $data.append($('<p/>').text(data));
         $data.scrollTop($data[0].scrollHeight);
@@ -45,13 +45,17 @@
         $status.text('Connected');
         $status.addClass('green');
     });
-{#    jug.on('connect', function () {#}
-{#        $status.removeClass('red');#}
-{#        $status.text('Connected');#}
-{#        $status.addClass('green');#}
-{#    });#}
+    {#    jug.on('connect', function () {#}
+    {#        $status.removeClass('red');#}
+    {#        $status.text('Connected');#}
+    {#        $status.addClass('green');#}
+    {#    });#}
 
     // always align the scrollbar to the bottom of the data div
     $data.scrollTop($data[0].scrollHeight);
+
+    $(window).on('beforeunload', function () {
+        socket.close();
+    });
 </script>
 </html>
