@@ -59,8 +59,9 @@ def index():
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
 
 
-
-def follow(follow_file):
+@app.route('/logger')
+def logger():
+    follow_file = open(LOG_FILE)
     follow_file.seek(0, 2)
     def logStream():
         line = follow_file.readline()
@@ -76,9 +77,9 @@ def run_server():
     app.wsgi_app = ProxyFix(app.wsgi_app)
     # app.run(host="0.0.0.0", port="80")
     http_server = WSGIServer(('0.0.0.0', 5000),  app)
-    jobs = [gevent.spawn(follow, open(LOG_FILE)),
-            gevent.spawn(http_server.serve_forever)]
-    gevent.joinall(jobs)
+    # jobs = [gevent.spawn(follow, open(LOG_FILE)),
+    #         gevent.spawn(http_server.serve_forever)]
+    http_server.serve_forever()
     print("Run2")
     # server.serve_forever()
 
