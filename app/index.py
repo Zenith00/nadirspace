@@ -82,7 +82,7 @@ def index():
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
 
 
-@app.route('/logger')
+@app.route('/send')
 def logger(follow_file):
 
     follow_file.seek(0, 2)
