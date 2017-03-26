@@ -89,7 +89,9 @@ def logger():
         tail = sh.tail("-f", LOG_FILE, _iter=True)
         while True:
             try:
-                yield tail.next()
+                next_line = tail.next()
+                print(next_line)
+                yield next_line
             except:
                 print("Nothing Found")
                 time.sleep(0.1)
