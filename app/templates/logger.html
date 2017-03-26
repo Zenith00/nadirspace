@@ -42,7 +42,7 @@
     source.onmessage = function (e) {
 {#        console.log(e.data);#}
 {#        console.log("test");#}
-        var toxic = e.data.substring(1,4);
+        var toxic = e.data.substring(1,5);
         console.log(toxic)
         $data.append($('<p/>').attr("data-toxicity",toxic).text(e.data));
         $data.find("p:first").remove();
