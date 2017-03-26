@@ -41,6 +41,7 @@
         console.log(e.data);
 {#        console.log("test");#}
         $data.append($('<p/>').text(e.data));
+        $data.find("p:first").remove();
         $data.scrollTop($data[0].scrollHeight);
     };
     source.addEventListener('open', function () {
