@@ -5,6 +5,8 @@ import requests
 # from flask import Flask, abort, request
 import gevent
 from gevent import monkey
+from werkzeug.wrappers import Response
+
 monkey.patch_all()
 import flask
 from werkzeug.serving import run_with_reloader
@@ -60,13 +62,12 @@ def index():
 
 def follow(follow_file):
     follow_file.seek(0, 2)
-    while True:
+    def logStream():
         line = follow_file.readline()
-        if not line:
-            time.sleep(0.1)
-            continue
-        line = escape(line)
-        jug.publish('logger', line)
+        if line:
+            line = escape(line)
+            yield line
+    return Response(logStream(), mimetype="text/event-stream")
 
 
 @run_with_reloader
