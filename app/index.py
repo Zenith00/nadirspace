@@ -3,6 +3,7 @@ import json
 import ipaddress
 import requests
 # from flask import Flask, abort, request
+import gevent
 from gevent import monkey
 monkey.patch_all()
 import flask
@@ -19,7 +20,8 @@ app = flask.Flask(__name__)
 app.debug = True
 
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
-
+LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
+MAX_LEN = -500
 @app.before_request
 def before_request():
     print('before request')
@@ -49,8 +51,7 @@ def gear():
 
 @app.route('/logs')
 def index():
-    LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
-    MAX_LEN = -500
+
     with open(LOG_FILE, 'r') as f:
         log_buffer = f.readlines()
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
