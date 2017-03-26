@@ -84,7 +84,7 @@ def logger():
 
     def logStream():
         import sh
-        tail = sh.tail("-f", "/var/log/some_log_file.log", _iter=True)
+        tail = sh.tail("-f", LOG_FILE, _iter=True)
         while True:
             try:
                 yield tail.next()
