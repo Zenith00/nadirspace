@@ -30,18 +30,18 @@
     var $status = $('#status');
     var $data = $('#data');
 
-    var source = new EventSource("{{ url_for('sse.stream') }}");
-        source.addEventListener('log', function (data) {
+    var source = new EventSource("/logstream");
+{#        source.addEventListener('log', function (data) {#}
 {#            var data = JSON.parse(event.data);#}
-            console.log(data);
-            $data.append($('<p/>').text(data));
-            $data.scrollTop($data[0].scrollHeight);
-        }, false);
-{#    source.onmessage = function (e) {#}
-{#        console.log(e.data);#}
-{#        $data.append($('<p/>').text(data));#}
-{#        $data.scrollTop($data[0].scrollHeight);#}
-{#    };#}
+{#            console.log(data);#}
+{#            $data.append($('<p/>').text(data));#}
+{#            $data.scrollTop($data[0].scrollHeight);#}
+{#        }, false);#}
+    source.onmessage = function (e) {
+        console.log(e.data);
+        $data.append($('<p/>').text(data));
+        $data.scrollTop($data[0].scrollHeight);
+    };
     source.addEventListener('open', function () {
         $status.removeClass('red');
         $status.text('Connected');

@@ -82,26 +82,21 @@ def index():
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
 
 
-@app.route('/send')
+@app.route('/logstream')
 def logger(follow_file):
 
-    follow_file.seek(0, 2)
-    while True:
-        line = follow_file.readline()
-        if not line:
-            time.sleep(0.1)
-            continue
-        line = escape(line)
-        sse.publish({"message":line}, type="log")
-    # def logStream():
-    #     import sh
-    #     tail = sh.tail("-f", LOG_FILE, _iter=True)
-    #     while True:
-    #         try:
-    #             yield tail.next()
-    #         except:
-    #             print("Nothing Found")
-    #             time.sleep(0.1)
+
+    def logStream():
+        import sh
+        tail = sh.tail("-f", LOG_FILE, _iter=True)
+        while True:
+            try:
+                yield tail.next()
+            except:
+                print("Nothing Found")
+                time.sleep(0.1)
+    return Response(logStream(), mimetype="text/event-stream")
+
         # while True:
         #     try:
         #         for line in sh.tail("-f", LOG_FILE, _iter=True):
