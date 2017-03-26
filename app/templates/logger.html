@@ -39,6 +39,7 @@
 {#        }, false);#}
     source.onmessage = function (e) {
         console.log(e.data);
+        console.log("test");
         $data.append($('<p/>').text(data));
         $data.scrollTop($data[0].scrollHeight);
     };

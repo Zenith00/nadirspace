@@ -91,7 +91,7 @@ def logger():
             try:
                 next_line = tail.next()
                 print(next_line)
-                yield next_line
+                yield "data: {}\n\n".format(next_line)
             except:
                 print("Nothing Found")
                 time.sleep(0.1)
