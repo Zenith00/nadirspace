@@ -9,6 +9,7 @@ import gevent
 from gevent import monkey
 from werkzeug.wrappers import Response
 import sh
+from flask_sse import sse
 monkey.patch_all()
 import flask
 from werkzeug.serving import run_with_reloader
@@ -40,6 +41,7 @@ sys.stdout = Unbuffered(sys.stdout)
 
 app = flask.Flask(__name__)
 app.debug = True
+app.register_blueprint(sse, url_prefix="/logger")
 
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
 LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
@@ -81,16 +83,21 @@ def index():
 
 @app.route('/logger')
 def logger():
-
-    def logStream():
-        import sh
-        tail = sh.tail("-f", LOG_FILE, _iter=True)
-        while True:
-            try:
-                yield tail.next()
-            except:
-                print("Nothing Found")
-                time.sleep(0.1)
+    tail = sh.tail("-f", LOG_FILE, _iter=True)
+    while True:
+        try:
+            sse.publish({"message":tail.next()}, type="log")
+        except:
+            time.sleep(0.1)
+    # def logStream():
+    #     import sh
+    #     tail = sh.tail("-f", LOG_FILE, _iter=True)
+    #     while True:
+    #         try:
+    #             yield tail.next()
+    #         except:
+    #             print("Nothing Found")
+    #             time.sleep(0.1)
         # while True:
         #     try:
         #         for line in sh.tail("-f", LOG_FILE, _iter=True):
@@ -106,7 +113,7 @@ def logger():
     #         while True:
     #             yield f.read()
     #             time.sleep(1)
-    return Response(logStream(), mimetype="text/event-stream")
+    # return Response(logStream(), mimetype="text/event-stream")
 
 
 @run_with_reloader
