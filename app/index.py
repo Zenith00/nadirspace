@@ -93,7 +93,6 @@ def logger():
                 yield "data: {}\n\n".format(next_line)
             except:
                 print("Nothing Found")
-                time.sleep(0.1)
     return Response(logStream(), mimetype="text/event-stream")
 
         # while True:
