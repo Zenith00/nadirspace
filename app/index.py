@@ -20,6 +20,24 @@ from flask import escape
 import time
 from gevent.wsgi import WSGIServer
 # from utils import utils_text, utils_file
+
+class Unbuffered(object):
+    def __init__(self, stream):
+        self.stream = stream
+
+    def write(self, data):
+        self.stream.write(data)
+        self.stream.flush()
+
+    def __getattr__(self, attr):
+        return getattr(self.stream, attr)
+
+import sys
+
+sys.stdout = Unbuffered(sys.stdout)
+
+
+
 app = flask.Flask(__name__)
 app.debug = True
 
@@ -101,20 +119,6 @@ def run_server():
     http_server.serve_forever()
     print("Run2")
     # server.serve_forever()
-class Unbuffered(object):
-    def __init__(self, stream):
-        self.stream = stream
-
-    def write(self, data):
-        self.stream.write(data)
-        self.stream.flush()
-
-    def __getattr__(self, attr):
-        return getattr(self.stream, attr)
-
-import sys
-
-sys.stdout = Unbuffered(sys.stdout)
 
 if __name__ == '__main__':
     run_server()
