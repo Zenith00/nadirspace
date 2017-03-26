@@ -73,7 +73,7 @@ def run_server():
     print("Running...")
     app.wsgi_app = ProxyFix(app.wsgi_app)
     # app.run(host="0.0.0.0", port="80")
-    server = WSGIServer(('0.0.0.0', 5000),  app)
+    http_server = WSGIServer(('0.0.0.0', 5000),  app)
     jobs = [gevent.spawn(follow, open(LOG_FILE)),
             gevent.spawn(http_server.serve_forever)]
     gevent.joinall(jobs)
