@@ -68,7 +68,10 @@ def logger():
         import sh
         tail = sh.tail("-f", "/var/log/some_log_file.log", _iter=True)
         while True:
-            yield tail.next()
+            try:
+                yield tail.next()
+            except:
+                yield None
         # while True:
         #     try:
         #         for line in sh.tail("-f", LOG_FILE, _iter=True):
