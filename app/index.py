@@ -1,6 +1,8 @@
 import json
 # from urllib import request
 import ipaddress
+import traceback
+
 import requests
 # from flask import Flask, abort, request
 import gevent
@@ -66,8 +68,10 @@ def logger():
         while True:
             try:
                 for line in sh.tail("-f", LOG_FILE, _iter=True):
+                    print(line)
                     yield line
             except:
+                print(traceback.format_exc())
                 time.sleep(0.1)
                 yield None
     return Response(logStream(), mimetype="text/event-stream")
