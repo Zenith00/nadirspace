@@ -88,44 +88,21 @@ def logger():
         tail = sh.tail("-f", LOG_FILE, _iter=True)
         while True:
             try:
-                next_line = tail.next()
+                next_line = escape(tail.next())
                 print(next_line)
                 yield "data: {}\n\n".format(next_line)
             except:
                 print("Nothing Found")
     return Response(logStream(), mimetype="text/event-stream")
 
-        # while True:
-        #     try:
-        #         for line in sh.tail("-f", LOG_FILE, _iter=True):
-        #             print(line)
-        #             yield line
-        #     except:
-        #         print(traceback.format_exc())
-        #         print("None")
-        #         time.sleep(0.1)
-        #         yield None
-    # def generate():
-    #     with open('job.log') as f:
-    #         while True:
-    #             yield f.read()
-    #             time.sleep(1)
-    # return Response(logStream(), mimetype="text/event-stream")
-
 
 @run_with_reloader
 def run_server():
     print("Running...")
     app.wsgi_app = ProxyFix(app.wsgi_app)
-    # app.run(host="0.0.0.0", port="80")
     http_server = WSGIServer(('0.0.0.0', 5000),  app)
-    # jobs = [gevent.spawn(logger, open(LOG_FILE)),
-    #         gevent.spawn(http_server.serve_forever)]
     http_server.serve_forever()
-    print("Run2")
-    # server.serve_forever()
 
 if __name__ == '__main__':
     run_server()
 
-#test
