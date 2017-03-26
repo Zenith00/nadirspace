@@ -83,9 +83,7 @@ def index():
 
 
 @app.route('/logstream')
-def logger(follow_file):
-
-
+def logger():
     def logStream():
         import sh
         tail = sh.tail("-f", LOG_FILE, _iter=True)
@@ -121,8 +119,8 @@ def run_server():
     app.wsgi_app = ProxyFix(app.wsgi_app)
     # app.run(host="0.0.0.0", port="80")
     http_server = WSGIServer(('0.0.0.0', 5000),  app)
-    jobs = [gevent.spawn(logger, open(LOG_FILE)),
-            gevent.spawn(http_server.serve_forever)]
+    # jobs = [gevent.spawn(logger, open(LOG_FILE)),
+    #         gevent.spawn(http_server.serve_forever)]
     http_server.serve_forever()
     print("Run2")
     # server.serve_forever()
