@@ -43,6 +43,7 @@
         $data.append($('<p/>').text(e.data));
         $data.find("p:first").remove();
         $data.scrollTop($data[0].scrollHeight);
+        window.scrollTo(0, document.body.scrollHeight);
     };
     source.addEventListener('open', function () {
         $status.removeClass('red');
