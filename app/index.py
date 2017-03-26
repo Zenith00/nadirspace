@@ -65,16 +65,20 @@ def index():
 def logger():
 
     def logStream():
+        import sh
+        tail = sh.tail("-f", "/var/log/some_log_file.log", _iter=True)
         while True:
-            try:
-                for line in sh.tail("-f", LOG_FILE, _iter=True):
-                    print(line)
-                    yield line
-            except:
-                print(traceback.format_exc())
-                print("None")
-                time.sleep(0.1)
-                yield None
+            yield tail.next()
+        # while True:
+        #     try:
+        #         for line in sh.tail("-f", LOG_FILE, _iter=True):
+        #             print(line)
+        #             yield line
+        #     except:
+        #         print(traceback.format_exc())
+        #         print("None")
+        #         time.sleep(0.1)
+        #         yield None
     # def generate():
     #     with open('job.log') as f:
     #         while True:
