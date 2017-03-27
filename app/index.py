@@ -94,13 +94,13 @@ def gear():
     return flask.render_template('geartimer.html')
 
 @app.route('/logs')
+@requires_auth
 def index():
     with open(LOG_FILE, 'r') as f:
         log_buffer = f.readlines()
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
 
 @app.route('/logstream')
-@requires_auth
 def logger():
     def logStream():
         import sh
