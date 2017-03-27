@@ -1,8 +1,10 @@
 # from urllib import request
 
 # from flask import Flask, abort, request
+import hashlib
 from flask_sse import sse
 from gevent import monkey
+import TOKENS
 from werkzeug.wrappers import Response
 
 monkey.patch_all()
@@ -10,10 +12,14 @@ import flask
 from werkzeug.serving import run_with_reloader
 from juggernaut import Juggernaut
 from werkzeug.contrib.fixers import ProxyFix
+
 jug = Juggernaut()
 from flask import escape
 from gevent.wsgi import WSGIServer
+import pymongo
 
+mongo = pymongo.MongoClient("mongodb://{usn}:{pwd}@nadir.space".format(usn=TOKENS.MONGO_USN, pwd=TOKENS.MONGO_PASS))
+auth_collection = mongo.get_database("website").get_collection("authentication")
 # from utils import utils_text, utils_file
 
 class Unbuffered(object):
@@ -31,8 +37,6 @@ import sys
 
 sys.stdout = Unbuffered(sys.stdout)
 
-
-
 app = flask.Flask(__name__)
 app.debug = True
 app.register_blueprint(sse, url_prefix="/logger")
@@ -40,11 +44,32 @@ app.config["REDIS_URL"] = "redis://localhost"
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
 LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
 MAX_LEN = -500
-@app.before_request
-def before_request():
-    print('before request')
-    return
 
+
+def check_auth(username, password):
+    """This function is called to check if a username /
+    password combination is valid.
+    """
+    result = auth_collection.find_one({"username": username, "password": hashlib.md5().update(password).digest()})
+    # return username == 'admin' and password == 'secret'
+    return result
+
+def authenticate():
+    """Sends a 401 response that enables basic auth"""
+    return Response(
+        'Could not verify your access level for that URL.\n'
+        'You have to login with proper credentials', 401,
+        {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+
+    return decorated
 
 @app.route("/")
 def hello():
@@ -73,8 +98,8 @@ def index():
         log_buffer = f.readlines()
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
 
-
 @app.route('/logstream')
+@requires_auth
 def logger():
     def logStream():
         import sh
@@ -86,16 +111,20 @@ def logger():
                 yield "data: {}\n\n".format(next_line)
             except:
                 print("Nothing Found")
+
     return Response(logStream(), mimetype="text/event-stream")
+
+from functools import wraps
+from flask import request, Response
+
 
 
 @run_with_reloader
 def run_server():
     print("Running...")
     app.wsgi_app = ProxyFix(app.wsgi_app)
-    http_server = WSGIServer(('0.0.0.0', 5000),  app)
+    http_server = WSGIServer(('0.0.0.0', 5000), app)
     http_server.serve_forever()
 
 if __name__ == '__main__':
     run_server()
-
