@@ -51,12 +51,14 @@ def check_auth(username, password):
     """This function is called to check if a username /
     password combination is valid.
     """
+    print("Checking!!")
     result = auth_collection.find_one({"username": username, "password": hashlib.md5().update(password).digest()})
     # return username == 'admin' and password == 'secret'
     return result
 
 def authenticate():
     """Sends a 401 response that enables basic auth"""
+    print("FAILED AUTH")
     return Response(
         'Could not verify your access level for that URL.\n'
         'You have to login with proper credentials', 401,
