@@ -52,10 +52,9 @@ def check_auth(username, password):
     password combination is valid.
     """
     print("Checking!!")
-    md5 = hashlib.md5()
-    md5.update(password)
-    print(password)
-    input_hash = str(md5.hexdigest()[:16])
+    input_hash = hashlib.md5(password.encode('utf-8')).hexdigest()
+    print(input_hash)
+
     result = auth_collection.find_one({"username": username, "password": input_hash})
     # return username == 'admin' and password == 'secret'
     if result:
