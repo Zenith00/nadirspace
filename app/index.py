@@ -53,7 +53,7 @@ def check_auth(username, password):
     """
     print("Checking!!")
     input_hash = hashlib.md5(password.encode('utf-8')).hexdigest()
-    print(input_hash)
+    # print(input_hash)
 
     result = auth_collection.find_one({"username": username, "password": input_hash})
     # return username == 'admin' and password == 'secret'
