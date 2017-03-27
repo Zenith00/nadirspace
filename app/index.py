@@ -52,9 +52,15 @@ def check_auth(username, password):
     password combination is valid.
     """
     print("Checking!!")
+    print(hashlib.md5().update(password).digest())
     result = auth_collection.find_one({"username": username, "password": hashlib.md5().update(password).digest()})
     # return username == 'admin' and password == 'secret'
-    return result
+    if result:
+        print("Auth Success")
+        return True
+    else:
+        print("Auth Failure")
+        return False
 
 def authenticate():
     """Sends a 401 response that enables basic auth"""
@@ -69,6 +75,7 @@ def requires_auth(f):
     def decorated(*args, **kwargs):
         auth = request.authorization
         if not auth or not check_auth(auth.username, auth.password):
+            print("Failed TO Authenticatae")
             return authenticate()
         return f(*args, **kwargs)
 
