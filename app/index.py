@@ -55,7 +55,7 @@ def check_auth(username, password):
     md5 = hashlib.md5()
     md5.update(password)
     print(password)
-    input_hash = md5.hexdigest()
+    input_hash = str(md5.hexdigest()[:16])
     result = auth_collection.find_one({"username": username, "password": input_hash})
     # return username == 'admin' and password == 'secret'
     if result:
