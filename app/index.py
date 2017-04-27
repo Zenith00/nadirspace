@@ -11,14 +11,13 @@ from functools import wraps
 monkey.patch_all()
 import flask
 from werkzeug.serving import run_with_reloader
-from juggernaut import Juggernaut
 from werkzeug.contrib.fixers import ProxyFix
 
-jug = Juggernaut()
 from flask import escape
 from gevent.wsgi import WSGIServer
 import pymongo
 
+import jinja2
 mongo = pymongo.MongoClient("mongodb://{usn}:{pwd}@nadir.space".format(usn=TOKENS.MONGO_USN, pwd=TOKENS.MONGO_PASS))
 auth_collection = mongo.get_database("website").get_collection("authentication")
 # from utils import utils_text, utils_file
@@ -39,6 +38,13 @@ import sys
 sys.stdout = Unbuffered(sys.stdout)
 
 app = flask.Flask(__name__)
+
+my_loader = jinja2.ChoiceLoader([
+    app.jinja_loader,
+    jinja2.FileSystemLoader('/home/austin/develop/textbasedproject'),
+])
+app.jinja_loader = my_loader
+
 app.debug = True
 app.register_blueprint(sse, url_prefix="/logger")
 app.config["REDIS_URL"] = "redis://localhost"
@@ -98,6 +104,10 @@ def tchat():
 def tchat_ratio():
     print("Recieved")
     return flask.render_template('trusted-ratio-data.html')
+
+@app.route("/tbag")
+def tbag():
+    return flask.render_template('tbag.html')
 
 @app.route("/gear")
 def gear():
