@@ -138,14 +138,14 @@ def logger():
 
 from functools import wraps
 from flask import request, Response
-
+from werkzeug.debug import DebuggedApplication
 
 
 @run_with_reloader
 def run_server():
     print("Running...")
     app.wsgi_app = ProxyFix(app.wsgi_app)
-    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server = WSGIServer(('0.0.0.0', 5000), DebuggedApplication(app))
     http_server.serve_forever()
 
 run_server()
