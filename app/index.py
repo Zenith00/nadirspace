@@ -143,9 +143,14 @@ from werkzeug.debug import DebuggedApplication
 
 @run_with_reloader
 def run_server():
-    print("Running...")
-    # app.wsgi_app = ProxyFix(app.wsgi_app)
-    http_server = WSGIServer(('0.0.0.0', 5000), DebuggedApplication(app))
-    http_server.serve_forever()
+    app.run(debug=True,
+            host='0.0.0.0',
+            port=5000,
+            threaded=True)
+    # print("Running...")
+    # # app.wsgi_app = ProxyFix(app.wsgi_app)
+    # http_server = WSGIServer(('0.0.0.0', 5000), DebuggedApplication(app))
+    # http_server.serve_forever()
 
-run_server()
+if __name__ == '__main__':
+    run_server()
