@@ -33,7 +33,8 @@ class Unbuffered(object):
     def __getattr__(self, attr):
         return getattr(self.stream, attr)
 
-import sys
+import sys, os
+os.environ["PYTHONUNBUFFERED"] = "True"
 
 sys.stdout = Unbuffered(sys.stdout)
 
