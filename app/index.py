@@ -145,7 +145,7 @@ from flask import request, Response
 def run_server():
     print("Running...")
     app.wsgi_app = ProxyFix(app.wsgi_app)
-    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server = WSGIServer(('0.0.0.0', 80), app)
     http_server.serve_forever()
 
 if __name__ == '__main__':
