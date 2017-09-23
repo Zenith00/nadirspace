@@ -18,7 +18,7 @@ def hook():
     else:
         abort(403)
     data = json.loads(request.data)
-    repo_name = data["repository"]["name"]
+    repo_name = data["repository"]["name"].lower()
     g = git.cmd.Git(os.path.expanduser("~/develop/" + repo_name))
     g.pull()
     return "OK"

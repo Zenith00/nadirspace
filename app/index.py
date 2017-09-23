@@ -51,7 +51,7 @@ app.register_blueprint(sse, url_prefix="/logger")
 app.config["REDIS_URL"] = "redis://localhost"
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
 LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
-MAX_LEN = -500
+MAX_LEN = -1000
 
 
 def check_auth(username, password):
