@@ -12,7 +12,7 @@ monkey.patch_all()
 import flask
 from werkzeug.serving import run_with_reloader
 from werkzeug.contrib.fixers import ProxyFix
-import app.index2
+import index2
 from flask import escape
 from gevent.wsgi import WSGIServer
 import pymongo
@@ -126,7 +126,7 @@ def index():
 def config():
     value = request.form['config']
 
-    return app.index2.parse(value)
+    return index2.parse(value)
 
 @app.route('/logstream')
 def logger():
