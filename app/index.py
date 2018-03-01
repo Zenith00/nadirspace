@@ -147,6 +147,7 @@ def config():
     return flask.render_template('parser.html')
 
 
+
 @app.route('/config', methods=['POST'])
 def parser():
     print("Asdf")
