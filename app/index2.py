@@ -1,12 +1,19 @@
-from flask import Flask
-app = Flask(__name__)
+import re
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+def parse(text):
+    total = 0
+    acq = 0
+    for match in re.findall(r'<tr>.*?<\/tr>', text.replace("\n","")):
+        # print(match)
 
-if __name__ == '__main__':
-    app.run(debug=True,
-            host='0.0.0.0',
-            port=8000,
-            threaded=True)
+        if "Adaptive" in match:
+            for submatch in re.findall(r'(?<="col-points">).*(?= pts)', match):
+                acq += float(submatch.split(" / ")[0])
+
+            pass
+
+        else:
+            for submatch in re.findall(r'(?<="col-points">).*(?= pts)', match):
+                acq += float(submatch.split(" / ")[0])
+                total += float(submatch.split(" / ")[1])
+    return acq/total
