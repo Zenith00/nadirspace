@@ -122,11 +122,15 @@ def index():
         log_buffer = f.readlines()
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
 
-@app.route('/config', methods=['GET', 'POST'])
+@app.route('/config')
 def config():
-    value = request.form['config']
+    return flask.render_template('parser.html')
 
-    return index2.parse(value)
+@app.route('/config', methods=['POST'])
+def parser():
+    text = request.form['text']
+    processed_text = index2.parse(text)
+    return processed_text
 
 @app.route('/logstream')
 def logger():
