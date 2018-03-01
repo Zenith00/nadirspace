@@ -126,7 +126,7 @@ def index():
 def config():
     value = request.form['config']
 
-    return index2.parse(value)
+    return app.index2.parse(value)
 
 @app.route('/logstream')
 def logger():
