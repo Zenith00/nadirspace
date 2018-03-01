@@ -124,11 +124,15 @@ def index():
 
 @app.route('/config')
 def config():
+    print("aaaa")
+
     return flask.render_template('parser.html')
 
 @app.route('/config', methods=['POST'])
 def parser():
+    print("Asdf")
     text = request.form['text']
+    print(text)
     processed_text = index2.parse(text)
     return str(processed_text)
 
