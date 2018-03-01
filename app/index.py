@@ -134,6 +134,7 @@ def parser():
     print(request.form)
     text = request.form['taname']
     print(text)
+    print("bb")
     processed_text = index2.parse(text)
     return str(processed_text)
 
