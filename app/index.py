@@ -131,8 +131,8 @@ def config():
 @app.route('/config', methods=['POST'])
 def parser():
     print("Asdf")
-    print(request)
-    text = request.form['text']
+    print(request.form)
+    text = request.form['parseform']
     print(text)
     processed_text = index2.parse(text)
     return str(processed_text)
