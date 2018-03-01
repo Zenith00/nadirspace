@@ -132,7 +132,7 @@ def config():
 def parser():
     print("Asdf")
     print(request.data)
-    text = request.form['parseform']
+    text = request.form['taname']
     print(text)
     processed_text = index2.parse(text)
     return str(processed_text)
