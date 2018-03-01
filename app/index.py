@@ -130,7 +130,7 @@ def config():
 def parser():
     text = request.form['text']
     processed_text = index2.parse(text)
-    return processed_text
+    return str(processed_text)
 
 @app.route('/logstream')
 def logger():
