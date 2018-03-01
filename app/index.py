@@ -151,7 +151,7 @@ def config():
 @app.route('/config', methods=['POST'])
 def parser():
     print("Asdf")
-    print(dict(request))
+    print(dict(request.form))
     text = request.form.get('taname')
     print(text)
     print("bb")
