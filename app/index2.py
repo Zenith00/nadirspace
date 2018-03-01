@@ -5,15 +5,16 @@ def parse(text):
     acq = 0
     for match in re.findall(r'<tr>.*?<\/tr>', text.replace("\n","")):
         # print(match)
+        try:
+            if "Adaptive" in match:
+                for submatch in re.findall(r'(?<="col-points">).*(?= pts)', match):
+                    acq += float(submatch.split(" / ")[0])
+                pass
 
-        if "Adaptive" in match:
-            for submatch in re.findall(r'(?<="col-points">).*(?= pts)', match):
-                acq += float(submatch.split(" / ")[0])
-
+            else:
+                for submatch in re.findall(r'(?<="col-points">).*(?= pts)', match):
+                    acq += float(submatch.split(" / ")[0])
+                    total += float(submatch.split(" / ")[1])
+        except:
             pass
-
-        else:
-            for submatch in re.findall(r'(?<="col-points">).*(?= pts)', match):
-                acq += float(submatch.split(" / ")[0])
-                total += float(submatch.split(" / ")[1])
     return acq/total
