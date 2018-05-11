@@ -107,8 +107,12 @@ def tchat_ratio():
     return flask.render_template('trusted-ratio-data.html')
 
 @app.route("/prison")
-def tbag():
+def prison():
     return flask.render_template('prison.html')
+
+@app.route("/tbag")
+def tbag():
+    return flask.render_template('tbag.html')
 
 @app.route("/gear")
 def gear():
