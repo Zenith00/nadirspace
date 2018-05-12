@@ -181,14 +181,14 @@ def logger():
 
 @run_with_reloader
 def run_server():
-    app.run(debug=True,
-            host='0.0.0.0',
-            port=5000,
-            threaded=True)
+    # app.run(debug=True,
+    #         host='0.0.0.0',
+    #         port=5000,
+    #         threaded=True)
     # print("Running...")
     # # app.wsgi_app = ProxyFix(app.wsgi_app)
-    # http_server = WSGIServer(('0.0.0.0', 5000), DebuggedApplication(app))
-    # http_server.serve_forever()
+    http_server = WSGIServer(('0.0.0.0', 80), app)
+    http_server.serve_forever()
 
 
 if __name__ == '__main__':
