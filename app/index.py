@@ -187,7 +187,7 @@ def run_server():
     #         threaded=True)
     # print("Running...")
     # # app.wsgi_app = ProxyFix(app.wsgi_app)
-    http_server = WSGIServer(('0.0.0.0', 80), app)
+    http_server = WSGIServer(('0.0.0.0', 80), DebuggedApplication(app))
     http_server.serve_forever()
 
 
