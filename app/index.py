@@ -2,18 +2,16 @@
 
 # from flask import Flask, abort, request
 import hashlib
+
+import TOKENS
 from flask_sse import sse
 from gevent import monkey
-import TOKENS
 from werkzeug.wrappers import Response
-from functools import wraps
 
 monkey.patch_all()
 import flask
 from werkzeug.serving import run_with_reloader
-from werkzeug.contrib.fixers import ProxyFix
 import index2
-from flask import escape
 from gevent.wsgi import WSGIServer
 import pymongo
 
@@ -187,7 +185,7 @@ def run_server():
     #         threaded=True)
     # print("Running...")
     # # app.wsgi_app = ProxyFix(app.wsgi_app)
-    http_server = WSGIServer(('0.0.0.0', 80), DebuggedApplication(app))
+    http_server = WSGIServer(('0.0.0.0', 8080), DebuggedApplication(app))
     http_server.serve_forever()
 
 
