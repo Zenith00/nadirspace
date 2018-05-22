@@ -168,10 +168,10 @@ def parser():
 import time
 import subprocess
 import select
-    #
-    # f = subprocess.Popen(['tail','-F',LOG_FILE], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-    # p = select.poll()
-    # p.register(f.stdout)
+
+f = subprocess.Popen(['tail','-F',LOG_FILE], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+p = select.poll()
+p.register(f.stdout)
 
 
 @app.route('/logstream')
