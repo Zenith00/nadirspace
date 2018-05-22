@@ -168,10 +168,10 @@ def parser():
 import time
 import subprocess
 import select
-#
-# f = subprocess.Popen(['tail','-F',LOG_FILE], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-# p = select.poll()
-# p.register(f.stdout)
+    #
+    # f = subprocess.Popen(['tail','-F',LOG_FILE], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    # p = select.poll()
+    # p.register(f.stdout)
 
 
 @app.route('/logstream')
@@ -189,17 +189,17 @@ def logger():
     return Response(logStream(), mimetype="text/event-stream")
 
 
-@run_with_reloader
-def run_server():
-    app.run(debug=True,
-            host='0.0.0.0',
-            port=8000,
-            threaded=True)
-    # print("Running...")
-    # # app.wsgi_app = ProxyFix(app.wsgi_app)
-    # http_server = WSGIServer(('0.0.0.0', 8000), DebuggedApplication(app))
-    # http_server.serve_forever()
+# @run_with_reloader
+# def run_server():
+#     app.run(debug=True,
+#             host='0.0.0.0',
+#             port=8000,
+#             threaded=True)
+#     # print("Running...")
+#     # # app.wsgi_app = ProxyFix(app.wsgi_app)
+#     # http_server = WSGIServer(('0.0.0.0', 8000), DebuggedApplication(app))
+#     # http_server.serve_forever()
 
 
 if __name__ == '__main__':
-    run_server()
+    app.run()
