@@ -8,7 +8,7 @@ import TOKENS
 from flask_sse import sse
 from gevent import monkey
 from werkzeug.wrappers import Response
-
+from pygtail import Pygtail
 monkey.patch_all()
 import flask
 from werkzeug.serving import run_with_reloader
@@ -185,12 +185,13 @@ def logger():
     def logStream():
         # import sh
         # tail = sh.tail("-f", LOG_FILE, _iter=True)
-        while True:
-            try:
-                yield "data: {}\n\n".format(f.stdout.readline())
-                time.sleep(0.5)
-            except:
-                print("Nothing Found")
+        for line in Pygtail(LOG_FILE):
+            yield line
+            # try:
+            #     yield "data: {}\n\n".format(f.stdout.readline())
+            #     time.sleep(0.5)
+            # except:
+            #     print("Nothing Found")
 
     return Response(logStream(), mimetype="text/event-stream")
 
