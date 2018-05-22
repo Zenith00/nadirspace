@@ -165,18 +165,24 @@ def parser():
     print("bb")
     processed_text = index2.parse(text)
     return str(processed_text)
+import time
+import subprocess
+import select
+
+f = subprocess.Popen(['tail','-F',LOG_FILE], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+p = select.poll()
+p.register(f.stdout)
 
 
 @app.route('/logstream')
 def logger():
     def logStream():
-        import sh
-        tail = sh.tail("-f", LOG_FILE, _iter=True)
+        # import sh
+        # tail = sh.tail("-f", LOG_FILE, _iter=True)
         while True:
             try:
-                next_line = tail.next()
-                # print(next_line)
-                yield "data: {}\n\n".format(next_line)
+                yield "data: {}\n\n".format(f.stdout.readline())
+                time.sleep(0.5)
             except:
                 print("Nothing Found")
 
