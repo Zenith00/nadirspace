@@ -110,7 +110,7 @@ def hello():
 def new():
     print("Recieved")
     # return "Bip Bop. Working!\n"
-    return flask.render_template('index.html')
+    return flask.render_template('new.html')
 
 
 @app.route("/tchat")
