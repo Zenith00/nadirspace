@@ -2,6 +2,7 @@
 
 # from flask import Flask, abort, request
 import hashlib
+import traceback
 
 import TOKENS
 from flask_sse import sse
@@ -169,13 +170,17 @@ import time
 import subprocess
 import select
 
-# f = subprocess.Popen(['tail','-F',LOG_FILE], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-# p = select.poll()
-# p.register(f.stdout)
+
 
 
 @app.route('/logstream')
 def logger():
+    try:
+        f = subprocess.Popen(['tail', '-F', LOG_FILE], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = select.poll()
+        p.register(f.stdout)
+    except:
+        return traceback.format_exc()
     def logStream():
         # import sh
         # tail = sh.tail("-f", LOG_FILE, _iter=True)
