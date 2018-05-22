@@ -103,6 +103,12 @@ def requires_auth(f):
 @app.route("/")
 def hello():
     print("Recieved")
+    return "Bip Bop. Working!\n"
+    # return flask.render_template('index.html')
+
+@app.route("/new")
+def hello():
+    print("Recieved")
     # return "Bip Bop. Working!\n"
     return flask.render_template('index.html')
 
