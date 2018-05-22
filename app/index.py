@@ -140,7 +140,7 @@ def gear():
     return flask.render_template('geartimer.html')
 
 
-@app.route('/logs')
+@app.route('/logstr')
 @requires_auth
 def index():
     with open(LOG_FILE, 'r') as f:
