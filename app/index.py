@@ -185,13 +185,29 @@ def logger():
     def logStream():
         # import sh
         # tail = sh.tail("-f", LOG_FILE, _iter=True)
-        for line in Pygtail(LOG_FILE):
-            yield line
-            # try:
-            #     yield "data: {}\n\n".format(f.stdout.readline())
-            #     time.sleep(0.5)
-            # except:
-            #     print("Nothing Found")
+        line = ""
+        with open(LOG_FILE, "rt") as follow:
+            follow.seek(-64, 2)
+            for block in iter(lambda: follow.read(1024), None):
+                if '\n' in block:
+                    # Only enter this block if we have at least one line to yield.
+                    # The +[''] part is to catch the corner case of when a block
+                    # ends in a newline, in which case it would repeat a line.
+                    for line in (line + block).splitlines(True) + ['']:
+                        if line.endswith('\n'):
+                            yield line
+                    # When exiting the for loop, 'line' has any remaninig text.
+                elif not block:
+                    time.sleep(0.2)
+        #     # Wait for data.
+        #
+        # for line in Pygtail(LOG_FILE):
+        #     yield line
+        #     # try:
+        #     #     yield "data: {}\n\n".format(f.stdout.readline())
+        #     #     time.sleep(0.5)
+        #     # except:
+        #     #     print("Nothing Found")
 
     return Response(logStream(), mimetype="text/event-stream")
 
