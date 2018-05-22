@@ -177,11 +177,12 @@ import select
 @app.route('/logstream')
 def logger():
     try:
-        f = subprocess.Popen(['tail', '-F', "/home/austin/develop/discbots/" + LOG_FILE], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        lf = "/home/austin/develop/discbots/" + LOG_FILE
+        f = subprocess.Popen(['tail', '-F', lf], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         p = select.poll()
         p.register(f.stdout)
     except:
-        return traceback.format_exc()
+        return lf + "\n" + traceback.format_exc()
     def logStream():
         # import sh
         # tail = sh.tail("-f", LOG_FILE, _iter=True)
