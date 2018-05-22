@@ -181,7 +181,7 @@ def logger():
         p = select.poll()
         p.register(f.stdout)
     except:
-        return lf + "\n" + traceback.format_exc()
+        return LOG_FILE + "\n" + traceback.format_exc()
     def logStream():
         # import sh
         # tail = sh.tail("-f", LOG_FILE, _iter=True)
