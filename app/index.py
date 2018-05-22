@@ -166,6 +166,7 @@ def parser():
     print("bb")
     processed_text = index2.parse(text)
     return str(processed_text)
+
 import time
 import subprocess
 import select
@@ -176,7 +177,7 @@ import select
 @app.route('/logstream')
 def logger():
     try:
-        f = subprocess.Popen(['tail', '-F', LOG_FILE], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        f = subprocess.Popen(['tail', '-F', "/home/austin/develop/discbots/" + LOG_FILE], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         p = select.poll()
         p.register(f.stdout)
     except:
