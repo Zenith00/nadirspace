@@ -177,8 +177,7 @@ import select
 @app.route('/logstream')
 def logger():
     try:
-        lf = "/home/austin/develop/discbots/" + LOG_FILE
-        f = subprocess.Popen(['tail', '-F', lf], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        f = subprocess.Popen(['tail', '-F', LOG_FILE], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         p = select.poll()
         p.register(f.stdout)
     except:
