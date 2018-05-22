@@ -176,15 +176,13 @@ log_obj = open(LOG_FILE, "r")
 
 @app.route('/logstream')
 def logger():
+    log_obj.seek(0, 2)
     def logStream():
         try:
-            # import sh
-            # tail = sh.tail("-f", LOG_FILE, _iter=True)
-            log_obj.seek(0,2)
             while True:
                 line = log_obj.readline()
                 if not line:
-                    time.sleep(0.1)
+                    time.sleep(0.5)
                     continue
                 yield line
         except:
