@@ -182,7 +182,7 @@ def logger():
             while True:
                 line = log_obj.readline()
                 if not line:
-                    time.sleep(0.5)
+                    time.sleep(0)
                     continue
                 yield line
         except:
