@@ -202,9 +202,10 @@ def tail_F(some_file):
             except IOError:
                 yield ''
             except:
-                return traceback.format_exc()
+                pass
+                yield traceback.format_exc()
     except:
-        return traceback.format_exc()
+        yield traceback.format_exc()
 
 @app.route('/logstream')
 def logger():
