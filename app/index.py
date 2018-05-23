@@ -178,15 +178,18 @@ log_obj = open(LOG_FILE, "r")
 def logger():
     # log_obj.seek(0, 2)
     def logStream():
-        import sh
-        tail = sh.tail("-f", LOG_FILE, _iter=True)
-        while True:
-            try:
-                next_line = tail.next()
-                # print(next_line)
-                yield "data: {}\n\n".format(next_line)
-            except:
-                print("Nothing Found")
+        try:
+            import sh
+            tail = sh.tail("-f", LOG_FILE, _iter=True)
+            while True:
+                try:
+                    next_line = tail.next()
+                    # print(next_line)
+                    yield "data: {}\n\n".format(next_line)
+                except:
+                    print("Nothing Found")
+        except:
+            yield traceback.format_exc()
     #
     # def logStream():
     #     try:
