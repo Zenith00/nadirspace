@@ -176,18 +176,29 @@ log_obj = open(LOG_FILE, "r")
 
 @app.route('/logstream')
 def logger():
-    log_obj.seek(0, 2)
+    # log_obj.seek(0, 2)
     def logStream():
-        try:
-            while True:
-                line = log_obj.readline()
-                if not line:
-                    time.sleep(0.1)
-                    continue
-                yield line
-        except:
-            yield traceback.format_exc()
-    #     # Wait for data.
+        import sh
+        tail = sh.tail("-f", LOG_FILE, _iter=True)
+        while True:
+            try:
+                next_line = tail.next()
+                # print(next_line)
+                yield "data: {}\n\n".format(next_line)
+            except:
+                print("Nothing Found")
+    #
+    # def logStream():
+    #     try:
+    #         while True:
+    #             line = log_obj.readline()
+    #             if not line:
+    #                 time.sleep(0.1)
+    #                 continue
+    #             yield line
+    #     except:
+    #         yield traceback.format_exc()
+    # #     # Wait for data.
     #
     # for line in Pygtail(LOG_FILE):
     #     yield line
