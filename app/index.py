@@ -173,14 +173,14 @@ import select
 
 log_obj = open(LOG_FILE, "r")
 
+import sh
 
 @app.route('/logstream')
 def logger():
     # log_obj.seek(0, 2)
     def logStream():
         try:
-            import sh
-            tail = sh.tail("-f", LOG_FILE, _iter=True)
+            tail = sh.tail("-F", LOG_FILE, _iter=True)
             while True:
                 try:
                     next_line = tail.next()
