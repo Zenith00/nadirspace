@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 import socket
-import urllib2
-import urllib
+import urllib.request, urllib.error, urllib.parse
+import urllib.request, urllib.parse, urllib.error
 import simplejson
 
 
@@ -60,14 +60,14 @@ class API(object):
                 'ip': ip,
                 'format': 'json'
         }
-        url = self.getCityUrl() + '?' + urllib.urlencode(query_parameters)
+        url = self.getCityUrl() + '?' + urllib.parse.urlencode(query_parameters)
         try:
-            file_obj = urllib2.urlopen(url)
-        except urllib2.URLError, e:
-            print "URLError"
+            file_obj = urllib.request.urlopen(url)
+        except urllib.error.URLError as e:
+            print("URLError")
             raise
-        except urllib2.HTTPError, e:
-            print "HTTPError"
+        except urllib.error.HTTPError as e:
+            print("HTTPError")
             raise
             
         data = file_obj.read()
@@ -81,14 +81,14 @@ class API(object):
                 'ip': ip,
                 'format': 'json'
         }
-        url = self.getCountryUrl() + '?' + urllib.urlencode(query_parameters)
+        url = self.getCountryUrl() + '?' + urllib.parse.urlencode(query_parameters)
         try:
-            file_obj = urllib2.urlopen(url)
-        except urllib2.URLError, e:
-            print "URLError"
+            file_obj = urllib.request.urlopen(url)
+        except urllib.error.URLError as e:
+            print("URLError")
             raise
-        except urllib2.HTTPError, e:
-            print "HTTPError"
+        except urllib.error.HTTPError as e:
+            print("HTTPError")
             raise
             
         data = file_obj.read()
@@ -104,7 +104,7 @@ def get_ip_from_name(name, port):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect((name, port))
         return s.getpeername()[0]
-    except Exception, e:
-        print "Socket Error: %s" % e
+    except Exception as e:
+        print("Socket Error: %s" % e)
         raise
 
