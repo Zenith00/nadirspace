@@ -160,7 +160,7 @@ def hack():
         data_dict = ipinfoapi.GetCity(ip)
 
         ua = request.headers.get('User-Agent')
-        return ip + "\r\n" + ua + "\r\n" + data_dict
+        return ip + "\r\n" + ua + "\r\n" + str(data_dict)
     except:
         return traceback.format_exc()
 
