@@ -3,22 +3,19 @@
 # from flask import Flask, abort, request
 import hashlib
 import traceback
-from ipinfodb import API as ipapi
+from app.ipinfodb import API as ipapi
 import TOKENS
 from flask_sse import sse
 from gevent import monkey
 from werkzeug.wrappers import Response
-from pygtail import Pygtail
+
 monkey.patch_all()
 import flask
-from werkzeug.serving import run_with_reloader
 import index2
-from gevent.wsgi import WSGIServer
 import pymongo
 
 from functools import wraps
 from flask import request, Response
-from werkzeug.debug import DebuggedApplication
 
 import jinja2
 
@@ -174,13 +171,7 @@ def parser():
     processed_text = index2.parse(text)
     return str(processed_text)
 
-import time
-import subprocess
-import select
-
 log_obj = open(LOG_FILE, "r")
-
-import sh
 
 def tail_F(some_file):
     first_call = True
