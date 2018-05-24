@@ -3,7 +3,7 @@
 # from flask import Flask, abort, request
 import hashlib
 import traceback
-from app.ipinfodb import API as ipapi
+from ipinfodb import API as ipapi
 import TOKENS
 from flask_sse import sse
 from gevent import monkey
