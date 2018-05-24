@@ -3,7 +3,7 @@
 # from flask import Flask, abort, request
 import hashlib
 import traceback
-
+from ipinfodb import API as ipapi
 import TOKENS
 from flask_sse import sse
 from gevent import monkey
@@ -157,6 +157,7 @@ def config():
 
 @app.route('/hackmedaddy')
 def hack():
+    ipinfoapi = ipapi()
     ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     ua = request.headers.get('User-Agent')
     return ip + "\n" + ua
