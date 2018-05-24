@@ -157,10 +157,12 @@ def config():
 
 @app.route('/hackmedaddy')
 def hack():
-    ipinfoapi = ipapi()
+    ipinfoapi = ipapi(TOKENS.ip_api)
     ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    data_dict = ipinfoapi.GetCity(ip)
+
     ua = request.headers.get('User-Agent')
-    return ip + "\n" + ua
+    return ip + "\r\n" + ua + "\r\n" + data_dict
 
 @app.route('/config', methods=['POST'])
 def parser():
