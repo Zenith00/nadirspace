@@ -155,7 +155,11 @@ def config():
 
     return flask.render_template('parser.html')
 
-
+@app.route('/hackmedaddy')
+def hack():
+    ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    ua = request.headers.get('User-Agent')
+    return ip + "\n" + ua
 
 @app.route('/config', methods=['POST'])
 def parser():
