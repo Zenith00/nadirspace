@@ -6,10 +6,8 @@ import traceback
 from ipinfodb import API as ipapi
 import TOKENS
 from flask_sse import sse
-from gevent import monkey
 from werkzeug.wrappers import Response
 
-monkey.patch_all()
 import flask
 import index2
 import pymongo
