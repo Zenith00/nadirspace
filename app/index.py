@@ -158,7 +158,6 @@ def hack():
         ipinfoapi = ipapi(TOKENS.ip_api)
         ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
         data_dict = ipinfoapi.GetCity(ip)
-
         ua = request.headers.get('User-Agent')
         return ip + "\r\n" + ua + "\r\n" + str(data_dict)
     except:
