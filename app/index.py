@@ -116,8 +116,10 @@ def new():
     print("Recieved")
     s = sorted(skills.items(), key=lambda x: skills[x[0]])[::-1]
     # return flask.render_template('new.html')
-
-    return flask.render_template('new.html', ctx={"skills1": s[:len(s) // 2], "skills2": s[len(s) // 2:]})
+    try:
+        return flask.render_template('new.html', ctx={"skills1": s[:len(s) // 2], "skills2": s[len(s) // 2:]})
+    except:
+        return traceback.format_exc()
 
 @app.route("/tchat")
 def tchat():
