@@ -20,7 +20,6 @@ import jinja2
 mongo = pymongo.MongoClient("mongodb://{usn}:{pwd}@nadir.space".format(usn=TOKENS.MONGO_USN, pwd=TOKENS.MONGO_PASS))
 auth_collection = mongo.get_database("website").get_collection("authentication")
 
-
 # from utils import utils_text, utils_file
 
 class Unbuffered(object):
@@ -33,7 +32,6 @@ class Unbuffered(object):
 
     def __getattr__(self, attr):
         return getattr(self.stream, attr)
-
 
 import sys, os
 
@@ -56,7 +54,6 @@ app.config["REDIS_URL"] = "redis://localhost"
 LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
 MAX_LEN = -1000
 
-
 def check_auth(username, password):
     """This function is called to check if a username /
     password combination is valid.
@@ -74,7 +71,6 @@ def check_auth(username, password):
         print("Auth Failure")
         return False
 
-
 def authenticate():
     """Sends a 401 response that enables basic auth"""
     print("FAILED AUTH")
@@ -82,7 +78,6 @@ def authenticate():
         'Could not verify your access level for that URL.\n'
         'You have to login with proper credentials', 401,
         {'WWW-Authenticate': 'Basic realm="Login Required"'})
-
 
 def requires_auth(f):
     @wraps(f)
@@ -95,42 +90,43 @@ def requires_auth(f):
 
     return decorated
 
-
 @app.route("/")
 def hello():
     print("Recieved")
     return "Bip Bop. Working!\n"
     # return flask.render_template('index.html')
 
-
-skills = {"Python": 5,
-          "Java":   5,
-          "MongoDB": 4,
-          "Hadoop MapReduce": 4,
-          "Apache Spark": 4,
-          "Keras":3,
-          "Javascript":2,
-          "Docker":2,
+skills = {"Python"          : 3,
+          "Java"            : 3,
+          "MongoDB"         : 3,
+          "Hadoop MapReduce": 2,
+          "Apache Spark"    : 2,
+          "Keras"           : 2,
+          "Javascript"      : 2,
+          "C++"             : 2,
+          "HTML/CSS"        : 2,
+          "MySQL"           : 1,
+          "6502 Assembly"   : 1,
+          "Swift"           : 2,
+          "Fortran"         : 1
           }
 
 @app.route("/new")
 def new():
     print("Recieved")
     # return "Bip Bop. Working!\n"
-    return flask.render_template('new.html', ctx = skills)
-
+    s = sorted(skills.items(), key=lambda x: skills[x])
+    return flask.render_template('new.html', ctx={"skills1": s[:len(s) // 2], "skills2": s[len(s) // 2:]})
 
 @app.route("/tchat")
 def tchat():
     print("Recieved")
     return flask.render_template('trusted-data.html')
 
-
 @app.route("/tchat-ratio")
 def tchat_ratio():
     print("Recieved")
     return flask.render_template('trusted-ratio-data.html')
-
 
 @app.route("/prison")
 def prison():
@@ -140,12 +136,10 @@ def prison():
 def tbag():
     return flask.render_template('tbag.html')
 
-
 @app.route("/gear")
 def gear():
     print("Recieved")
     return flask.render_template('geartimer.html')
-
 
 @app.route('/logstr')
 @requires_auth
@@ -153,7 +147,6 @@ def index():
     with open(LOG_FILE, 'r') as f:
         log_buffer = f.readlines()
     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
-
 
 @app.route('/config')
 def config():
@@ -219,7 +212,6 @@ def tail_F(some_file):
 @app.route('/logstream')
 def logger():
     return Response(tail_F(LOG_FILE), mimetype="text/event-stream")
-
 
 # @run_with_reloader
 # def run_server():
