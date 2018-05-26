@@ -323,16 +323,22 @@
                         {% endfor %}
 
 
-                        <li><span class="ability-title">Bootstrap Framework</span> <span class="ability-score"><span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star filled"></span></span></li>
-
-
 					</ul>
 				</div>
 
 
 				<div class="col-md-6">
 					<ul class="no-bullets">
-						<li><span class="ability-title">MVC Pattern</span> <span class="ability-score"><span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star filled"></span> <span class="glyphicon glyphicon-star"></span></span></li>
+                        {% for item in ctx.skills2 %}
+                            <li><span class="ability-title"> {{ item[0] }}</span> <span class="ability-score">
+                                {% for i in range(item[1]) %}
+                                    <span class="glyphicon glyphicon-star filled"></span>
+                                {% endfor %}
+                                {% for i in range(3-item[1]) %}
+                                    <span class="glyphicon glyphicon-star"></span>
+                                {% endfor %}
+                            </span></li>
+                        {% endfor %}
 
 
 					</ul>
