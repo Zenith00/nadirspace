@@ -114,8 +114,8 @@ skills = {"Python"          : 3,
 @app.route("/new")
 def new():
     print("Recieved")
-    s = sorted(skills.items(), key=lambda x: skills[x])
-    return flask.render_template('new.html')
+    s = sorted(skills.items(), key=lambda x: skills[x][1])
+    # return flask.render_template('new.html')
 
     return flask.render_template('new.html', ctx={"skills1": s[:len(s) // 2], "skills2": s[len(s) // 2:]})
 
