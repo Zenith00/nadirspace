@@ -102,11 +102,22 @@ def hello():
     return "Bip Bop. Working!\n"
     # return flask.render_template('index.html')
 
+
+skills = {"Python": 5,
+          "Java":   5,
+          "MongoDB": 4,
+          "Hadoop MapReduce": 4,
+          "Apache Spark": 4,
+          "Keras":3,
+          "Javascript":2,
+          "Docker":2,
+          }
+
 @app.route("/new")
 def new():
     print("Recieved")
     # return "Bip Bop. Working!\n"
-    return flask.render_template('new.html')
+    return flask.render_template('new.html', ctx = skills)
 
 
 @app.route("/tchat")
