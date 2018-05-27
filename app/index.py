@@ -7,7 +7,7 @@ from ipinfodb import API as ipapi
 import TOKENS
 from flask_sse import sse
 from werkzeug.wrappers import Response
-
+import binascii
 import flask
 import index2
 import pymongo
@@ -16,6 +16,15 @@ from functools import wraps
 from flask import request, Response
 
 import jinja2
+
+def parametrized(dec):
+    def layer(*args, **kwargs):
+        def repl(f):
+            return dec(f, *args, **kwargs)
+        return repl
+    return layer
+
+
 
 mongo = pymongo.MongoClient("mongodb://{usn}:{pwd}@nadir.space".format(usn=TOKENS.MONGO_USN, pwd=TOKENS.MONGO_PASS))
 auth_collection = mongo.get_database("website").get_collection("authentication")
@@ -54,21 +63,18 @@ app.config["REDIS_URL"] = "redis://localhost"
 LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
 MAX_LEN = -1000
 
-def check_auth(username, password):
+def check_auth(username, password,authtype):
     """This function is called to check if a username /
     password combination is valid.
     """
     print("Checking!!")
-    input_hash = hashlib.md5(password.encode('utf-8')).hexdigest()
+    input_hash = binascii.hexlify(hashlib.pbkdf2_hmac("sha256",password.encode('utf-8'), TOKENS.salt.emcode('utf-8'), 1000000))
     # print(input_hash)
 
     result = auth_collection.find_one({"username": username, "password": input_hash})
-    # return username == 'admin' and password == 'secret'
-    if result:
-        print("Auth Success")
+    if result and (result["type"] == authtype or result["type"] == "all"):
         return True
     else:
-        print("Auth Failure")
         return False
 
 def authenticate():
@@ -79,15 +85,13 @@ def authenticate():
         'You have to login with proper credentials', 401,
         {'WWW-Authenticate': 'Basic realm="Login Required"'})
 
-def requires_auth(f):
-    @wraps(f)
+@parametrized
+def requires_auth(f, authtype):
     def decorated(*args, **kwargs):
         auth = request.authorization
-        if not auth or not check_auth(auth.username, auth.password):
+        if not auth or not check_auth(auth.username, auth.password, authtype):
             print("Failed TO Authenticatae")
             return authenticate()
-        return f(*args, **kwargs)
-
     return decorated
 
 @app.route("/")
@@ -113,6 +117,7 @@ skills = {"Python"          : 3,
 # test
 @app.route("/new")
 def new():
+    return
     print("Recieved")
     s = sorted(skills.items(), key=lambda x: skills[x[0]])[::-1]
     # return flask.render_template('new.html')
@@ -145,7 +150,7 @@ def gear():
     return flask.render_template('geartimer.html')
 
 @app.route('/logstr')
-@requires_auth
+@requires_auth("log")
 def index():
     with open(LOG_FILE, 'r') as f:
         log_buffer = f.readlines()
