@@ -93,6 +93,7 @@ def requires_auth(f, authtype):
         if not auth or not check_auth(auth.username, auth.password, authtype):
             print("Failed TO Authenticatae")
             return authenticate()
+        return f(*args, **kwargs)
     return decorated
 
 @app.route("/")
