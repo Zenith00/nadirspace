@@ -75,6 +75,7 @@ def check_auth(username, password,authtype):
     if result and (result["type"] == authtype or result["type"] == "all"):
         return True
     else:
+        print(input_hash)
         return False
 
 def authenticate():
