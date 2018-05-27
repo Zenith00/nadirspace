@@ -21,13 +21,13 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 
 .icon { display: inline-block;  height: 32px; width: 32px; }
 .icon.icon-linkedin {
-	background: url(images/linkedin_logo.png) no-repeat 0px -32px;
+	background: url(images/linkedin_logo.png) no-repeat ;
 }
 .icon.icon-github {
-	background: url(images/github_logo.png) no-repeat 0px -64px;
+	background: url(images/github_logo.png) no-repeat;
 }
 .icon.icon-email {
-	background: url(images/email_logo.png) no-repeat 0px -96px;
+	background: url(images/email_logo.png) no-repeat;
 }
 
 .jumbotron {
