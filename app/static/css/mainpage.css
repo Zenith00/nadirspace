@@ -20,15 +20,15 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 .btn-primary:hover { background-color: #1c8784;  border-color: #1c8784; }
 
 .icon { display: inline-block;  height: 32px; width: 32px; }
-/*.icon.icon-linkedin {*/
-	/*background: url(images/linkedin_logo.png) no-repeat ;*/
-/*}*/
-/*.icon.icon-github {*/
-	/*background: url(images/github_logo.png) no-repeat;*/
-/*}*/
-/*.icon.icon-email {*/
-	/*background: url(images/email_logo.png) no-repeat;*/
-/*}*/
+.icon.icon-linkedin {
+	background: url(images/linkedin_logo.png) no-repeat ;
+}
+.icon.icon-github {
+	background: url(images/github_logo.png) no-repeat;
+}
+.icon.icon-email {
+	background: url(images/email_logo.png) no-repeat;
+}
 
 .jumbotron {
 	/*background: no-repeat center right fixed url(images/background.jpg);*/
