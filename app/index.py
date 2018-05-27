@@ -68,7 +68,7 @@ def check_auth(username, password,authtype):
     password combination is valid.
     """
     print("Checking!!")
-    input_hash = binascii.hexlify(hashlib.pbkdf2_hmac("sha256",password.encode('utf-8'), TOKENS.salt.encode('utf-8'), 1000000))
+    input_hash = binascii.hexlify(hashlib.pbkdf2_hmac("sha256",password.encode('utf-8'), TOKENS.salt.encode('utf-8'), 100000))
     print(password)
     print(password.encode('utf-8'))
     print(TOKENS.salt.encode('utf-8'))
