@@ -126,6 +126,11 @@ def new():
     except:
         return traceback.format_exc()
 
+@app.route("/authtest")
+@requires_auth("log")
+def authtest():
+    return "Working!!"
+
 @app.route("/tchat")
 def tchat():
     print("Recieved")
