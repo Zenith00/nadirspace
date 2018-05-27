@@ -87,6 +87,7 @@ def authenticate():
 
 @parametrized
 def requires_auth(f, authtype):
+    @wraps(f)
     def decorated(*args, **kwargs):
         auth = request.authorization
         if not auth or not check_auth(auth.username, auth.password, authtype):
