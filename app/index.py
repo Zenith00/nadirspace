@@ -132,8 +132,8 @@ def new():
     except:
         return traceback.format_exc()
 
-@app.route("/mk4")
-def new():
+@app.route("/mk3")
+def mk3():
     print("Recieved")
     try:
         return flask.render_template('mk3.html')
