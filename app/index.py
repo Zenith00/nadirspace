@@ -134,9 +134,7 @@ def new():
 
 @app.route("/mk3")
 def new():
-    # return
     print("Recieved")
-    # return flask.render_template('new.html')
     try:
         return flask.render_template('mk3.html')
     except:
