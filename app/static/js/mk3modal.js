@@ -2,10 +2,10 @@ $(document).ready(function(){
 
   // MODAL
   var modalText = {
-    roambi: {
-      title: 'Roambi.com',
-      tag: 'BUSINESS ANALYTICS.',
-      detail: 'Roambi provides analytics, reporting, and business intelligence for companies to use on the go. A Wordpress hosted site written in PHP and Javascript with Hubspot Integration.',
+    logbot: {
+      title: 'LOG.com',
+      tag: 'LOGB ANALYTICS.',
+      detail: 'LOGBOT provides analytics, reporting, and business intelligence for companies to use on the go. A Wordpress hosted site written in PHP and Javascript with Hubspot Integration.',
       link: 'http://www.roambi.com'
     },
     walker: {
@@ -108,20 +108,20 @@ $(document).ready(function(){
   function fillModal(id) {
     $('#modal .title').text(modalText[id].title);
     $('#modal .detail').text(modalText[id].detail);
-    $('#modal .tag').text(modalText[id].tag);
-    if (modalText[id].link) $('#modal .button').addClass('visible')
-                                               .parent()
-                                               .attr('href', modalText[id].link)
-
-    $.each($('#modal li'), function(index, value ) {
-      $(this).text(modalText[id].bullets[index]);
-    });
-    $.each($('#modal .slide'), function(index, value) {
-      $(this).css({
-        background: "url('img/slides/" + id + '-' + index + ".jpg') center center/cover",
-        backgroundSize: 'cover'
-      });
-
-    });
+    // $('#modal .tag').text(modalText[id].tag);
+    // if (modalText[id].link) $('#modal .button').addClass('visible')
+    //                                            .parent()
+    //                                            .attr('href', modalText[id].link)
+    //
+    // $.each($('#modal li'), function(index, value ) {
+    //   $(this).text(modalText[id].bullets[index]);
+    // });
+    // $.each($('#modal .slide'), function(index, value) {
+    //   $(this).css({
+    //     background: "url('img/slides/" + id + '-' + index + ".jpg') center center/cover",
+    //     backgroundSize: 'cover'
+    //   });
+    //
+    // });
   }
 })

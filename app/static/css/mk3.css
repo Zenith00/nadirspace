@@ -567,7 +567,8 @@ section {
           background: #E31B6D;
           color: #fff; }
         section:nth-of-type(3) #gallery .mix:nth-child(1) .card {
-          background: url("../img/thumb-1.jpg") center center/cover; }
+          background: url("../img/mk3/logbot.png") center center/cover; }
+
         section:nth-of-type(3) #gallery .mix:nth-child(2) .card {
           background: url("../img/thumb-2.jpg") center center/cover; }
         section:nth-of-type(3) #gallery .mix:nth-child(3) .card {
