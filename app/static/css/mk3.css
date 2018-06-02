@@ -1,4 +1,5 @@
 @font-face {
+
   font-family: 'Raleway';
   src: url("../fonts/Raleway-Regular.ttf"); }
 @font-face {
@@ -568,7 +569,6 @@ section {
           color: #fff; }
         section:nth-of-type(3) #gallery .mix:nth-child(1) .card {
           background: url("../img/mk3/logbot.png") center center/cover; }
-
         section:nth-of-type(3) #gallery .mix:nth-child(2) .card {
           background: url("../img/thumb-2.jpg") center center/cover; }
         section:nth-of-type(3) #gallery .mix:nth-child(3) .card {
@@ -592,6 +592,7 @@ section {
         section:nth-of-type(3) #gallery .mix:nth-child(12) .card {
           background: url("../img/thumb-12.jpg") center center/cover; }
         section:nth-of-type(3) #gallery .mix .card {
+
           height: 240px;
           max-width: 100%;
           width: calc(50vw - 8px);
