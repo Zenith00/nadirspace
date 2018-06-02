@@ -5,7 +5,7 @@ $(document).ready(function(){
     logbot: {
       title: 'LOG.com',
       tag: 'LOGB ANALYTICS.',
-      detail: 'LOGBOT provides analytics, reporting, and business intelligence for companies to use on the go. A Wordpress hosted site written in PHP and Javascript with Hubspot Integration.',
+      detail: 'Roambi provides analytics, reporting, and business intelligence for companies to use on the go. A Wordpress hosted site written in PHP and Javascript with Hubspot Integration.',
       link: 'http://www.roambi.com'
     },
     walker: {
@@ -94,12 +94,12 @@ $(document).ready(function(){
     carousel.off('mousemove')
             .addClass('transition')
             .css('transform','translateX(' + (direction * slideWidth) + 'px)');
-    // setTimeout(function(){
-    //   if (direction === 1) {
-    //     $('.slide:first').before($('.slide:last'));
-    //   } else if (direction === -1) {
-    //     $('.slide:last').after($('.slide:first'));
-    //   }
+    setTimeout(function(){
+      if (direction === 1) {
+        $('.slide:first').before($('.slide:last'));
+      } else if (direction === -1) {
+        $('.slide:last').after($('.slide:first'));
+      }
       carousel.removeClass('transition')
       carousel.css('transform','translateX(0px)');
     },700)
@@ -116,11 +116,11 @@ $(document).ready(function(){
     $.each($('#modal li'), function(index, value ) {
       $(this).text(modalText[id].bullets[index]);
     });
-    // $.each($('#modal .slide'), function(index, value) {
-    //   $(this).css({
-    //     background: "url('img/slides/" + id + '-' + index + ".jpg') center center/cover",
-    //     backgroundSize: 'cover'
-    //   });
+    $.each($('#modal .slide'), function(index, value) {
+      $(this).css({
+        background: "url('img/slides/" + id + '-' + index + ".jpg') center center/cover",
+        backgroundSize: 'cover'
+      });
 
     });
   }
