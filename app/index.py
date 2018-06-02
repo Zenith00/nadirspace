@@ -132,7 +132,7 @@ def new():
     except:
         return traceback.format_exc()
 
-@app.route("/new")
+@app.route("/mk3")
 def new():
     # return
     print("Recieved")
