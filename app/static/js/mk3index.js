@@ -46,10 +46,11 @@ $(function () {
         }
 
         // Link Highlighting
-        console.log(pos2);
+        console.log("pos: " + pos2);
         console.log($('#home').offset().top);
         console.log($('#portfolio').offset().top);
         console.log($('#blog').offset().top);
+        console.log();
         if (pos2 > $('#home').offset().top) {
             highlightLink('home');
         }
