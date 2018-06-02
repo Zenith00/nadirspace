@@ -64,12 +64,14 @@
     <div class="flex">
 
       <div class="text">
-        Hello, I'm <span class="highlight">Matthew Williams</span>.
+         <span class="highlight">Austin Zhang</span>.
         <br>
-        I'm a full-stack web developer.
+        Developer
       </div>
 
-      <div class="button page-link" dest="about">View my work <i class="mdi mdi-arrow-right"></i></div>
+      <div class="button page-link" dest="about">View my work
+{#          <i class="mdi mdi-arrow-right"></i>#}
+      </div>
 
       <nav class="flex">
         <div class="link-wrap">
@@ -85,7 +87,104 @@
 
   </section>
 
-<!-- ABOUT -->
+
+
+<!-- PORTFOLIO -->
+  <section class="flex" id="portfolio">
+
+    <div class="header waypoint" data-animation="slide-in-right">PROJECTS</div>
+    <div class="header-bar waypoint" data-animation="slide-in-right" data-delay=".3s"></div>
+
+    <div class="filter-wrap waypoint" data-animation="fade-in">
+      <div class="flex row">
+        <div class="filter" data-filter="all">ALL</div>
+        <div class="filter" data-filter=".node">NODE.JS</div>
+        <div class="filter" data-filter=".rails">RUBY/RAILS</div>
+        <div class="filter" data-filter=".js">JAVASCRIPT</div>
+      </div>
+      <div class="float-bar">
+        <div class="flex row">
+          <div class="filter" data-filter="all">ALL</div>
+          <div class="filter" data-filter=".node">NODE.JS</div>
+          <div class="filter" data-filter=".rails">RUBY/RAILS</div>
+          <div class="filter" data-filter=".js">JAVASCRIPT</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="gallery" class="container flex row wrap waypoint">
+      <div class="mix js" data-my-order="1">
+        <div>
+          <div class="card"></div>
+          <div class="text">
+            <div class="bold">Logbot</div>
+            <span class="highlight">Pure JavaScript</span>
+          </div>
+          <div class="button" id="logbot">LEARN MORE</div>
+        </div>
+      </div>
+
+
+      <div class="mix rails" data-my-order="1">
+        <div>
+          <div class="card"></div>
+          <div class="text">
+            <div class="bold">Walker Tracker</div>
+            <span class="highlight">Ruby on Rails+ JS</span>
+          </div>
+          <div class="button" id="walker">LEARN MORE</div>
+        </div>
+      </div>
+
+      <div class="mix node" data-my-order="1">
+        <div>
+          <div class="card"></div>
+          <div class="text">
+            <div class="bold">MY STAND</div>
+            <span class="highlight">Node.js on Sails</span>
+          </div>
+          <div class="button" id="mystand">LEARN MORE</div>
+        </div>
+      </div>
+
+      <div class="mix js" data-my-order="1">
+        <div>
+          <div class="card"></div>
+          <div class="text">
+            <div class="bold">NEVER SURRENDER</div>
+            <span class="highlight">Pure JavaScript</span>
+          </div>
+          <div class="button" id="never">LEARN MORE</div>
+        </div>
+      </div>
+
+      <div class="mix rails" data-my-order="1">
+        <div>
+          <div class="card"></div>
+          <div class="text">
+            <div class="bold">Powur</div>
+            <span class="highlight">Ruby on Rails + Angular</span>
+          </div>
+          <div class="button" id="powur">LEARN MORE</div>
+        </div>
+      </div>
+
+
+      <div class="mix node" data-my-order="1">
+        <div>
+          <div class="card"></div>
+          <div class="text">
+            <div class="bold">The Mall</div>
+            <span class="highlight">Node + React.js</span>
+          </div>
+          <div class="button" id="themall">LEARN MORE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ABOUT -->
   <section id="about" style="display:None">
     <div class="container flex">
 
@@ -237,100 +336,6 @@
     </div>
   </section>
 
-<!-- PORTFOLIO -->
-  <section class="flex" id="portfolio">
-
-    <div class="header waypoint" data-animation="slide-in-right">PROJECTS</div>
-    <div class="header-bar waypoint" data-animation="slide-in-right" data-delay=".3s"></div>
-
-    <div class="filter-wrap waypoint" data-animation="fade-in">
-      <div class="flex row">
-        <div class="filter" data-filter="all">ALL</div>
-        <div class="filter" data-filter=".node">NODE.JS</div>
-        <div class="filter" data-filter=".rails">RUBY/RAILS</div>
-        <div class="filter" data-filter=".js">JAVASCRIPT</div>
-      </div>
-      <div class="float-bar">
-        <div class="flex row">
-          <div class="filter" data-filter="all">ALL</div>
-          <div class="filter" data-filter=".node">NODE.JS</div>
-          <div class="filter" data-filter=".rails">RUBY/RAILS</div>
-          <div class="filter" data-filter=".js">JAVASCRIPT</div>
-        </div>
-      </div>
-    </div>
-
-
-    <div id="gallery" class="container flex row wrap waypoint">
-      <div class="mix js" data-my-order="1">
-        <div>
-          <div class="card"></div>
-          <div class="text">
-            <div class="bold">Logbot</div>
-            <span class="highlight">Pure JavaScript</span>
-          </div>
-          <div class="button" id="logbot">LEARN MORE</div>
-        </div>
-      </div>
-
-
-      <div class="mix rails" data-my-order="1">
-        <div>
-          <div class="card"></div>
-          <div class="text">
-            <div class="bold">Walker Tracker</div>
-            <span class="highlight">Ruby on Rails+ JS</span>
-          </div>
-          <div class="button" id="walker">LEARN MORE</div>
-        </div>
-      </div>
-
-      <div class="mix node" data-my-order="1">
-        <div>
-          <div class="card"></div>
-          <div class="text">
-            <div class="bold">MY STAND</div>
-            <span class="highlight">Node.js on Sails</span>
-          </div>
-          <div class="button" id="mystand">LEARN MORE</div>
-        </div>
-      </div>
-
-      <div class="mix js" data-my-order="1">
-        <div>
-          <div class="card"></div>
-          <div class="text">
-            <div class="bold">NEVER SURRENDER</div>
-            <span class="highlight">Pure JavaScript</span>
-          </div>
-          <div class="button" id="never">LEARN MORE</div>
-        </div>
-      </div>
-
-      <div class="mix rails" data-my-order="1">
-        <div>
-          <div class="card"></div>
-          <div class="text">
-            <div class="bold">Powur</div>
-            <span class="highlight">Ruby on Rails + Angular</span>
-          </div>
-          <div class="button" id="powur">LEARN MORE</div>
-        </div>
-      </div>
-
-
-      <div class="mix node" data-my-order="1">
-        <div>
-          <div class="card"></div>
-          <div class="text">
-            <div class="bold">The Mall</div>
-            <span class="highlight">Node + React.js</span>
-          </div>
-          <div class="button" id="themall">LEARN MORE</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 <!-- BLOG -->
   <section id="blog" style="display:None">
