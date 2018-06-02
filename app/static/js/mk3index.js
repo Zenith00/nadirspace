@@ -54,18 +54,14 @@ $(function () {
         if (pos2 > $('#home').offset().top) {
             highlightLink('home');
         }
-        if (pos2 > $('#about2').offset().top) {
+        else if (pos2 > $('#portfolio').offset().top) {
+            highlightLink('portfolio');
+        }
+        else if (pos2 > $('#about2').offset().top) {
             console.log("Highlighting about2");
             highlightLink('about2');
         }
-        if (pos2 > $('#portfolio').offset().top) {
-            highlightLink('portfolio');
-        }
-
-        // if (pos2 > $('#blog').offset().top) {
-        //     highlightLink('blog');
-        // }
-        if (pos2 > $('#contact').offset().top ||
+        else if (pos2 > $('#contact').offset().top ||
             pos + $(window).height() === $(document).height()) {
             highlightLink('contact');
         }
