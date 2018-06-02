@@ -78,7 +78,7 @@ $(document).ready(function(){
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
      slideWidth = $(window).innerWidth();
     }
-    $('.carousel-wrap, .slide').css('width', slideWidth);
+    $('.carousel-wrap, .slide').css('width', slideWidth).css('display','None');
     $('.modal').css('max-width', slideWidth);
     $('#carousel').css('left', slideWidth * -1)
   }
