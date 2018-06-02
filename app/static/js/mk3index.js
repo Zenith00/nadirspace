@@ -54,7 +54,7 @@ $(function () {
         if (pos2 > $('#home').offset().top) {
             highlightLink('home');
         }
-        if (pos2 > $('#about').offset().top) {
+        if (pos2 > $('#about2').offset().top) {
             highlightLink('about');
         }
         if (pos2 > $('#portfolio').offset().top) {
