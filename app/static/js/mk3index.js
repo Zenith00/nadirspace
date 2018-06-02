@@ -55,6 +55,7 @@ $(function () {
             highlightLink('home');
         }
         if (pos2 > $('#about2').offset().top) {
+            console.log("Highlighting about2");
             highlightLink('about2');
         }
         if (pos2 > $('#portfolio').offset().top) {
@@ -82,6 +83,8 @@ $(function () {
 
     function highlightLink(anchor) {
         $('nav .active').removeClass('active');
+        console.log(anchor);
+        console.log($("nav").find('[dest="' + anchor + '"]'));
         $("nav").find('[dest="' + anchor + '"]').addClass('active');
     }
 
