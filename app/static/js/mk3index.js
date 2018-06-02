@@ -54,14 +54,14 @@ $(function () {
         if (pos2 > $('#home').offset().top) {
             highlightLink('home');
         }
-        else if (pos2 > $('#portfolio').offset().top) {
+        if (pos2 > $('#portfolio').offset().top) {
             highlightLink('portfolio');
         }
-        else if (pos2 > $('#about2').offset().top) {
+         if (pos2 > $('#about2').offset().top) {
             // console.log("Highlighting about2");
             highlightLink('about2');
         }
-        else if (pos2 > $('#contact').offset().top ||
+         if (pos2 > $('#contact').offset().top ||
             pos + $(window).height() === $(document).height()) {
             highlightLink('contact');
         }
