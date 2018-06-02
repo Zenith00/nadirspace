@@ -170,7 +170,7 @@ $(function () {
         e.preventDefault();
 
         $.ajax({
-            url: "https://formspree.io/mattwilliams85@gmail.com",
+            url: "address@email.com",
             method: "POST",
             data: {message: $('form').serialize()},
             dataType: "json"
