@@ -46,11 +46,11 @@ $(function () {
         }
 
         // Link Highlighting
-        console.log("pos: " + pos2);
-        console.log($('#home').offset().top);
-        console.log($('#portfolio').offset().top);
-        console.log($('#about2').offset().top);
-        console.log();
+        // console.log("pos: " + pos2);
+        // console.log($('#home').offset().top);
+        // console.log($('#portfolio').offset().top);
+        // console.log($('#about2').offset().top);
+        // console.log();
         if (pos2 > $('#home').offset().top) {
             highlightLink('home');
         }
@@ -58,7 +58,7 @@ $(function () {
             highlightLink('portfolio');
         }
         else if (pos2 > $('#about2').offset().top) {
-            console.log("Highlighting about2");
+            // console.log("Highlighting about2");
             highlightLink('about2');
         }
         else if (pos2 > $('#contact').offset().top ||
@@ -79,8 +79,8 @@ $(function () {
 
     function highlightLink(anchor) {
         $('nav .active').removeClass('active');
-        console.log(anchor);
-        console.log($("nav").find('[dest="' + anchor + '"]'));
+        // console.log(anchor);
+        // console.log($("nav").find('[dest="' + anchor + '"]'));
         $("nav").find('[dest="' + anchor + '"]').addClass('active');
     }
 
