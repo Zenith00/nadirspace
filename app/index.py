@@ -123,12 +123,22 @@ skills = {"Python"          : 3,
 # test
 @app.route("/new")
 def new():
-    # return
+    return
     print("Recieved")
     s = sorted(skills.items(), key=lambda x: skills[x[0]])[::-1]
     # return flask.render_template('new.html')
     try:
         return flask.render_template('new.html', ctx={"skills1": s[:len(s) // 2], "skills2": s[len(s) // 2:]})
+    except:
+        return traceback.format_exc()
+
+@app.route("/new")
+def new():
+    # return
+    print("Recieved")
+    # return flask.render_template('new.html')
+    try:
+        return flask.render_template('mk3.html')
     except:
         return traceback.format_exc()
 
