@@ -3,6 +3,11 @@
 <html>
 <head>
   <title></title>
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+	<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+	<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+	<link href="/site.webmanifest" rel="manifest">
+	<link href="/safari-pinned-tab.svg" rel="mask-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 
   <!-- HOSTED -->
@@ -10,8 +15,8 @@
   <link href="fonts/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" />
 
   <!-- LOCAL -->
-  <link rel="stylesheet" href="style/style.css">
-  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mk3.css') }}">
+{#  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >#}
 
   <!-- HOSTED -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
@@ -20,9 +25,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
 
   <!-- LOCAL -->
-  <script src="scripts/pt.min.js"></script>
-  <script src="scripts/index.js"></script>
-  <script src="scripts/modal.js"></script>
+{#  <script src="scripts/pt.min.js"></script>#}
+  <script src="{{ url_for('static', filename='scripts/mk3index.js') }}"></script>
+  <script src="{{ url_for('static', filename='scripts/mk3modal.js') }}"></script>
 
 </head>
 <body>
@@ -482,4 +487,4 @@
 </body>
 </html>
 
-<script src="scripts/canvas.js"></script>
+<script src="{{ url_for('static', filename='scripts/mk3canvas.js') }}"></script>
