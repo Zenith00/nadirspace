@@ -715,7 +715,7 @@ section:nth-of-type(3) .container {
 
 section:nth-of-type(3) .filter-wrap {
     position: relative;
-    display: none
+    /*display: none*/
 }
 
 section:nth-of-type(3) .filter {
