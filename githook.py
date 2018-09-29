@@ -4,10 +4,11 @@ import requests
 from flask import Flask, abort, request
 import git
 import os
+from gevent.wsgi import WSGIServer
+
 app = Flask(__name__)
 
-
-@app.route('/hooks',methods=['POST'])
+@app.route('/hooks', methods=['POST'])
 def hook():
     print("Hook Recieved")
     request_ip = ipaddress.ip_address(u'{0}'.format(request.remote_addr))
@@ -24,4 +25,5 @@ def hook():
     return "OK"
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", port="4200")
+    http_server = WSGIServer(('', 5000), app)
+    http_server.serve_forever()
