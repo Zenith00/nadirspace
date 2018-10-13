@@ -9,6 +9,9 @@ gevent = "*"
 requests = "*"
 flask = "*"
 gunicorn = "*"
+request = "*"
+simplejson = "*"
+flask-sse = "*"
 
 [dev-packages]
 
