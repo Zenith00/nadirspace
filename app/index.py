@@ -10,7 +10,6 @@ from werkzeug.wrappers import Response
 import binascii
 import flask
 import index2
-import pymongo
 
 from functools import wraps
 from flask import request, Response
@@ -26,8 +25,8 @@ def parametrized(dec):
 
 
 
-mongo = pymongo.MongoClient("mongodb://{usn}:{pwd}@nadir.space".format(usn=TOKENS.MONGO_USN, pwd=TOKENS.MONGO_PASS))
-auth_collection = mongo.get_database("website").get_collection("authentication")
+# mongo = pymongo.MongoClient("mongodb://{usn}:{pwd}@nadir.space".format(usn=TOKENS.MONGO_USN, pwd=TOKENS.MONGO_PASS))
+# auth_collection = mongo.get_database("website").get_collection("authentication")
 
 # from utils import utils_text, utils_file
 
@@ -63,23 +62,23 @@ app.config["REDIS_URL"] = "redis://localhost"
 LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
 MAX_LEN = -1000
 
-def check_auth(username, password,authtype):
-    """This function is called to check if a username /
-    password combination is valid.
-    """
-    print("Checking!!")
-    input_hash = binascii.hexlify(hashlib.pbkdf2_hmac("sha256",password.encode('utf-8'), TOKENS.salt.encode('utf-8'), 100000)).decode('utf-8')
-    print(password)
-    print(password.encode('utf-8'))
-    print(TOKENS.salt.encode('utf-8'))
-    # print(input_hash)
-
-    result = auth_collection.find_one({"username": username, "password": input_hash})
-    if result and (result["type"] == authtype or result["type"] == "all"):
-        return True
-    else:
-        print(input_hash)
-        return False
+# def check_auth(username, password,authtype):
+#     """This function is called to check if a username /
+#     password combination is valid.
+#     """
+#     print("Checking!!")
+#     input_hash = binascii.hexlify(hashlib.pbkdf2_hmac("sha256",password.encode('utf-8'), TOKENS.salt.encode('utf-8'), 100000)).decode('utf-8')
+#     print(password)
+#     print(password.encode('utf-8'))
+#     print(TOKENS.salt.encode('utf-8'))
+#     # print(input_hash)
+#
+#     result = auth_collection.find_one({"username": username, "password": input_hash})
+#     if result and (result["type"] == authtype or result["type"] == "all"):
+#         return True
+#     else:
+#         print(input_hash)
+#         return False
 
 def authenticate():
     """Sends a 401 response that enables basic auth"""
