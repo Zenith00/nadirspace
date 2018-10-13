@@ -201,43 +201,43 @@ def parser():
     processed_text = index2.parse(text)
     return str(processed_text)
 
-log_obj = open(LOG_FILE, "r")
+# log_obj = open(LOG_FILE, "r")
 
-def tail_F(some_file):
-    first_call = True
-    try:
-        while True:
-            try:
-                if first_call:
-                    log_obj.seek(0, 2)
-                    first_call = False
-                latest_data = log_obj.read()
-                while True:
-                    if '\n' not in latest_data:
-                        latest_data += log_obj.read()
-                        if '\n' not in latest_data:
-                            yield ''
-                            if not os.path.isfile(some_file):
-                                break
-                            continue
-                    latest_lines = latest_data.split('\n')
-                    if latest_data[-1] != '\n':
-                        latest_data = latest_lines[-1]
-                    else:
-                        latest_data = log_obj.read()
-                    for line in latest_lines[:-1]:
-                        yield line + '\n'
-            except IOError:
-                yield ''
-            except:
-                pass
-                yield traceback.format_exc()
-    except:
-        yield traceback.format_exc()
+# def tail_F(some_file):
+#     first_call = True
+#     try:
+#         while True:
+#             try:
+#                 if first_call:
+#                     log_obj.seek(0, 2)
+#                     first_call = False
+#                 latest_data = log_obj.read()
+#                 while True:
+#                     if '\n' not in latest_data:
+#                         latest_data += log_obj.read()
+#                         if '\n' not in latest_data:
+#                             yield ''
+#                             if not os.path.isfile(some_file):
+#                                 break
+#                             continue
+#                     latest_lines = latest_data.split('\n')
+#                     if latest_data[-1] != '\n':
+#                         latest_data = latest_lines[-1]
+#                     else:
+#                         latest_data = log_obj.read()
+#                     for line in latest_lines[:-1]:
+#                         yield line + '\n'
+#             except IOError:
+#                 yield ''
+#             except:
+#                 pass
+#                 yield traceback.format_exc()
+#     except:
+#         yield traceback.format_exc()
 
-@app.route('/logstream')
-def logger():
-    return Response(tail_F(LOG_FILE), mimetype="text/event-stream")
+# @app.route('/logstream')
+# def logger():
+#     return Response(tail_F(LOG_FILE), mimetype="text/event-stream")
 
 # @run_with_reloader
 # def run_server():
