@@ -38,7 +38,7 @@ def load_github_hooks(github_url='https://api.github.com'):
         else:
             if resp.headers.get('X-RateLimit-Remaining') == '0':
                 reset_ts = int(resp.headers['X-RateLimit-Reset'])
-                raise ServiceUnavailable('Rate limited from GitHub")
+                raise ServiceUnavailable('Rate limited from GitHub')
             else:
                 raise ServiceUnavailable('Error reaching GitHub')
     except (KeyError, ValueError, requests.exceptions.ConnectionError):
