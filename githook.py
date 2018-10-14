@@ -6,7 +6,7 @@ from flask import Flask, abort, request
 import git
 import os
 from gevent.pywsgi import WSGIServer
-from werkzeug.exceptions import ServiceUnavailable
+from werkzeug.exceptions import ServiceUnavailable, Forbidden
 
 app = Flask(__name__)
 def is_github_ip(ip_str):
@@ -49,15 +49,9 @@ def load_github_hooks(github_url='https://api.github.com'):
 def hook():
     print("Hook Recieved", flush=True)
     print(request.remote_addr, flush=True)
-    request_ip = ipaddress.ip_address(u'{0}'.format(request.remote_addr))
-    hook_blocks = requests.get('https://api.github.com/meta').json()['hooks']
-    print(hook_blocks, flush=True)
-    for block in hook_blocks:
-        if ipaddress.ip_address(request_ip) in ipaddress.ip_network(block):
-            break
-    else:
-        print("failed to authenticate from IP " + str(request_ip), flush=True)
-        abort(403)
+    if not is_github_ip(request.remote_addr):
+        raise Forbidden('Not from github')
+
     data = json.loads(request.data)
     repo_name = data["repository"]["name"].lower()
     g = git.cmd.Git(os.path.expanduser("~/develop/" + repo_name))
