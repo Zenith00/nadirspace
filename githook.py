@@ -4,7 +4,7 @@ import requests
 from flask import Flask, abort, request
 import git
 import os
-from gevent.wsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
 
