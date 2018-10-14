@@ -17,7 +17,7 @@ def hook():
         if ipaddress.ip_address(request_ip) in ipaddress.ip_network(block):
             break
     else:
-        print("failed to authenticate from IP " + request_ip)
+        print("failed to authenticate from IP " + str(request_ip))
         abort(403)
     data = json.loads(request.data)
     repo_name = data["repository"]["name"].lower()
