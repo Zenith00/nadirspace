@@ -11,6 +11,7 @@ app = Flask(__name__)
 @app.route('/hooks', methods=['POST'])
 def hook():
     print("Hook Recieved", flush=True)
+    print(request.remote_addr, flush=True)
     request_ip = ipaddress.ip_address(u'{0}'.format(request.remote_addr))
     hook_blocks = requests.get('https://api.github.com/meta').json()['hooks']
     for block in hook_blocks:
