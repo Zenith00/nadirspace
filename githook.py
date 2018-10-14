@@ -10,14 +10,14 @@ app = Flask(__name__)
 #s
 @app.route('/hooks', methods=['POST'])
 def hook():
-    print("Hook Recieved")
+    print("Hook Recieved", flush=True)
     request_ip = ipaddress.ip_address(u'{0}'.format(request.remote_addr))
     hook_blocks = requests.get('https://api.github.com/meta').json()['hooks']
     for block in hook_blocks:
         if ipaddress.ip_address(request_ip) in ipaddress.ip_network(block):
             break
     else:
-        print("failed to authenticate from IP " + str(request_ip))
+        print("failed to authenticate from IP " + str(request_ip), flush=true)
         abort(403)
     data = json.loads(request.data)
     repo_name = data["repository"]["name"].lower()
