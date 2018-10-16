@@ -762,6 +762,7 @@ section:nth-of-type(3) .text {
 
 section:nth-of-type(3) #gallery {
     margin: 20px 0;
+    will-change: transform;
 }
 
 section:nth-of-type(3) #gallery .text, section:nth-of-type(3) #gallery .button {
