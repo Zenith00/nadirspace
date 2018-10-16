@@ -8,12 +8,12 @@ $(document).ready(function () {
             detail: 'Roambi provides analytics, reporting, and business intelligence for companies to use on the go. A Wordpress hosted site written in PHP and Javascript with Hubspot Integration.',
             link: 'http://www.roambi.com'
         },
-        walker: {
+        mercy: {
             title: 'WalkerTracker',
             tag: 'PERFORMANCE METRICS.',
             detail: 'Walker Tracker offers goal management, fitness tracking, and team competitions to companies for internal use. A Ruby on Rails and Javascript companion site for the Walker Tracker App. Features visual metrics and gamified progression system.',
         },
-        powur: {
+        subswaps: {
             title: 'Powur.com',
             tag: 'MULTI-LEVEL MARKETING.',
             detail: 'Powur is a multi-level marketing platform for lead generation, recruitment, and team building. Built with Ruby on Rails and Angular-UI. Makes use of Angular-material for front-end visuals. Features complex user tree heiarchy and commission system.',
