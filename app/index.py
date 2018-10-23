@@ -62,23 +62,24 @@ app.config["REDIS_URL"] = "redis://localhost"
 # LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
 MAX_LEN = -1000
 
-# def check_auth(username, password,authtype):
-#     """This function is called to check if a username /
-#     password combination is valid.
-#     """
-#     print("Checking!!")
-#     input_hash = binascii.hexlify(hashlib.pbkdf2_hmac("sha256",password.encode('utf-8'), TOKENS.salt.encode('utf-8'), 100000)).decode('utf-8')
-#     print(password)
-#     print(password.encode('utf-8'))
-#     print(TOKENS.salt.encode('utf-8'))
-#     # print(input_hash)
-#
-#     result = auth_collection.find_one({"username": username, "password": input_hash})
-#     if result and (result["type"] == authtype or result["type"] == "all"):
-#         return True
-#     else:
-#         print(input_hash)
-#         return False
+def check_auth(username, password,authtype):
+    """This function is called to check if a username /
+    password combination is valid.
+    """
+    return False
+    # print("Checking!!")
+    # input_hash = binascii.hexlify(hashlib.pbkdf2_hmac("sha256",password.encode('utf-8'), TOKENS.salt.encode('utf-8'), 100000)).decode('utf-8')
+    # print(password)
+    # print(password.encode('utf-8'))
+    # print(TOKENS.salt.encode('utf-8'))
+    # # print(input_hash)
+    #
+    # result = auth_collection.find_one({"username": username, "password": input_hash})
+    # if result and (result["type"] == authtype or result["type"] == "all"):
+    #     return True
+    # else:
+    #     print(input_hash)
+    #     return False
 
 def authenticate():
     """Sends a 401 response that enables basic auth"""
@@ -105,20 +106,7 @@ def hello():
     return "Bip Bop. Working!\n"
     # return flask.render_template('index.html')
 
-skills = {"Python"          : 3,
-          "Java"            : 3,
-          "MongoDB"         : 3,
-          "Hadoop MapReduce": 2,
-          "Apache Spark"    : 2,
-          "Keras"           : 2,
-          "Javascript"      : 2,
-          "C++"             : 2,
-          "HTML/CSS"        : 2,
-          "MySQL"           : 1,
-          "6502 Assembly"   : 1,
-          "Swift"           : 2,
-          "Fortran"         : 1
-          }
+
 # test
 @app.route("/new")
 def new():
