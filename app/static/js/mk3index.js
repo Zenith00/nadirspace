@@ -61,10 +61,10 @@ $(function () {
             // console.log("Highlighting about2");
             highlightLink('about2');
         }
-         if (pos2 > $('#contact').offset().top ||
-            pos + $(window).height() === $(document).height()) {
-            highlightLink('contact');
-        }
+        //  if (pos2 > $('#contact').offset().top ||
+        //     pos + $(window).height() === $(document).height()) {
+        //     highlightLink('contact');
+        // }
 
         // Prevent Hover on Scroll
         clearTimeout(lockTimer);
