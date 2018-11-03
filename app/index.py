@@ -103,7 +103,7 @@ def requires_auth(f, authtype):
 @app.route("/")
 def hello():
     print("Recieved")
-    return "Bip Bop. Working!\n"
+    return "Nothing to see here..."
     # return flask.render_template('index.html')
 
 
@@ -119,7 +119,7 @@ def new():
     except:
         return traceback.format_exc()
 
-@app.route("/mk3")
+@app.route("/profile")
 def mk3():
     print("Recieved")
     try:
