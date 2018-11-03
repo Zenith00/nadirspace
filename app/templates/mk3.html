@@ -12,7 +12,7 @@
     <!-- HOSTED -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,300italic,400italic,300,700italic,800italic,800' rel='stylesheet'
           type='text/css'>
-    <link href="fonts/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet"/>
+    <link href="//cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" media="all" rel="stylesheet"/>
 
     <!-- LOCAL -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mk3.css') }}">
@@ -401,15 +401,13 @@
 
             <div class="skills-wrapper flex row-gt-sm">
                 <div class="flex flex-50-gt-sm waypoint" data-animation="slide-in-left">
-                    <img src="{{ url_for('static', filename='img/mk3/me.png') }}" class="me" style="height:100px">
+                    <img src="{{ url_for('static', filename='img/mk3/me.png') }}" class="me" style="height:115px">
 {#                    <div><img class="up-arrow" src="img/up-arrow.png"></div>#}
                     <div class="label bold">Education</div>
                     <div>
-                        I'm the Front-End Developer for <a class="highlight" href="http://www.eyecuelab.com" target="_blank">EyeCue Lab</a> in Portland, OR.
+                        Pursuing a BS in Computer Science and Linguistics at the University of Urbana-Champaign.
                         <br>
-                        I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences.
-                        <br>
-                        <span class="page-link highlight" dest="contact">Let's make something special.</span>
+{#                        <span class="page-link highlight" dest="contact">Let's make something special.</span>#}
                     </div>
                 </div>
 
@@ -562,53 +560,53 @@
     {#    </section>#}
 
     <!-- CONTACT -->
-    <section id="contact">
-        <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="svgcolor-light">
-            <path d="M0 0 L50 100 L100 0 Z" fill="white" stroke="white"></path>
-        </svg>
-        <div class="container flex">
-            <div class="header waypoint" data-animation="slide-in-left">CONTACT</div>
-            <div class="header-bar waypoint" data-animation="slide-in-right" data-delay=".25s"></div>
-            <div class="highlight waypoint" data-animation="slide-in-right" data-delay=".5s">Have a question or want to work together?</div>
-            <form class="waypoint" data-animation="pop-in" data-delay=".5s" id="contact-form">
-                <input placeholder="Name" type="text" name="name" required>
-                <input placeholder="Enter email" type="email" name="email" required>
-                <textarea placeholder="Your Message" type="text" name="message"></textarea>
-                <div id="success">
-                    <div>Your message was sent successfully. Thanks!<span id="close" class="mdi mdi-close"></span></div>
-                </div>
-                <input class="button" type="submit" id="submit" value=SUBMIT>
-            </form>
-        </div>
-    </section>
+{#    <section id="contact">#}
+{#        <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="svgcolor-light">#}
+{#            <path d="M0 0 L50 100 L100 0 Z" fill="white" stroke="white"></path>#}
+{#        </svg>#}
+{#        <div class="container flex">#}
+{#            <div class="header waypoint" data-animation="slide-in-left">CONTACT</div>#}
+{#            <div class="header-bar waypoint" data-animation="slide-in-right" data-delay=".25s"></div>#}
+{#            <div class="highlight waypoint" data-animation="slide-in-right" data-delay=".5s">Have a question or want to work together?</div>#}
+{#            <form class="waypoint" data-animation="pop-in" data-delay=".5s" id="contact-form">#}
+{#                <input placeholder="Name" type="text" name="name" required>#}
+{#                <input placeholder="Enter email" type="email" name="email" required>#}
+{#                <textarea placeholder="Your Message" type="text" name="message"></textarea>#}
+{#                <div id="success">#}
+{#                    <div>Your message was sent successfully. Thanks!<span id="close" class="mdi mdi-close"></span></div>#}
+{#                </div>#}
+{#                <input class="button" type="submit" id="submit" value=SUBMIT>#}
+{#            </form>#}
+{#        </div>#}
+{#    </section>#}
 
     <footer>
         <i class="mdi mdi-chevron-double-up page-link" dest="home"></i>
 
         <div class="icon-wrap flex row">
-            <a href="https://www.linkedin.com/in/username">
+            <a href="https://www.linkedin.com/in/austinz2">
                 <div class="flex icon" id="icon-2">
                     <i class="mdi mdi-linkedin"></i>
                 </div>
             </a>
-            <a href="">
-                <div class="flex icon" id="icon-3">
-                    <i class="mdi mdi-facebook"></i>
-                </div>
-            </a>
-            <a href="https://instagram.com/instagram/">
+{#            <a href="">#}
+{#                <div class="flex icon" id="icon-3">#}
+{#                    <i class="mdi mdi-facebook"></i>#}
+{#                </div>#}
+{#            </a>#}
+            <a href="https://github.com/Zenith00/">
                 <div class="flex icon" id="icon-4">
-                    <i class="mdi mdi-instagram"></i>
+                    <i class="mdi mdi-github"></i>
                 </div>
             </a>
-            <a href="">
-                <div class="flex icon" id="icon-5">
-                    <i class="mdi mdi-codepen"></i>
-                </div>
-            </a>
+{#            <a href="">#}
+{#                <div class="flex icon" id="icon-5">#}
+{#                    <i class="mdi mdi-codepen"></i>#}
+{#                </div>#}
+{#            </a>#}
         </div>
         <div class="info-box">
-            <div class="footnote"> name here <span class="highlight">&copy;2015</span></div>
+{#            <div class="footnote"> name here <span class="highlight">&copy;2015</span></div>#}
         </div>
     </footer>
 
