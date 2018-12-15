@@ -25,6 +25,8 @@ $(document).ready(function () {
             title: 'MentionViz',
             tag: 'Relation Visualization',
             detail: 'MentionViz is a network visualization of relationships on the /r/Overwatch public discord, built on igraph and visnetwork on R.',
+            link: 'https://nadir.space/mentionvizmorer'
+
         },
         never: {
             title: 'NeverSurrender',
