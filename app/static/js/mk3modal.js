@@ -21,10 +21,10 @@ $(document).ready(function () {
             detail: 'Submarine Swaps provides the ability to pay Lightning Invoices with on-chain tokens, automatically providing support for trustless refunds.',
             link: 'https://submarineswaps.org/'
         },
-        mystand: {
-            title: 'MyStand',
-            tag: 'CROWD-FUNDED CHARITY.',
-            detail: 'MyStand is a crowd-funding, media sharing website, that has you donating actions instead of money out of your pocket. Single page App built with Node.js on Sails and Angular 2.0. Features social media sharing and large scale crowd-funding.',
+        mentionviz: {
+            title: 'MentionViz',
+            tag: 'Relation Visualization',
+            detail: 'MentionViz is a network visualization of relationships on the /r/Overwatch public discord, built on igraph and visnetwork on R.',
         },
         never: {
             title: 'NeverSurrender',
