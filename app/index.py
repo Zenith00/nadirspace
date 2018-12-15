@@ -188,7 +188,7 @@ def mentionviz2():
     return flask.render_template("mentionviz2.html")
 
 @app.route("/mentionvizmorer")
-def mentionviz2():
+def mentionviz3():
     return flask.render_template("mentionviz3.html")
 
 
