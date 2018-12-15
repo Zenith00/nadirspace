@@ -179,6 +179,10 @@ def hack():
     except:
         return traceback.format_exc()
 
+@app.route("/mentionviz")
+def mentionviz1():
+    return flask.render_template("mentionviz1.html")
+
 @app.route('/config', methods=['POST'])
 def parser():
     print("Asdf")
