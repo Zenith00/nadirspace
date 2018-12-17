@@ -193,7 +193,7 @@ def mentionviz3():
 
 @app.route("/mentionviz2018")
 def mentionviz2018():
-    return flask.render_template("mentionviz2018.html.html")
+    return flask.render_template("mentionviz2018.html")
 
 
 
