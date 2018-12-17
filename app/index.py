@@ -191,6 +191,11 @@ def mentionviz2():
 def mentionviz3():
     return flask.render_template("mentionviz3.html")
 
+@app.route("/mentionviz2018")
+def mentionviz2018():
+    return flask.render_template("mentionviz2018.html.html")
+
+
 
 @app.route('/config', methods=['POST'])
 def parser():
