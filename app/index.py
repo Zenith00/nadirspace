@@ -199,6 +199,10 @@ def mentionviz2018():
 def mentionviz2018withtchat():
     return flask.render_template("mentionvizwithtrusted.html")
 
+@app.route("/mentionviz2018withtchatdir")
+def mentionviz2018withtchatdir():
+    return flask.render_template("mentionviztrustdir.html")
+
 @app.route('/config', methods=['POST'])
 def parser():
     print("Asdf")
