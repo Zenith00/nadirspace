@@ -195,7 +195,9 @@ def mentionviz3():
 def mentionviz2018():
     return flask.render_template("mentionviz2018.html")
 
-
+@app.route("/mentionviz2018withtchat")
+def mentionviz2018withtchat():
+    return flask.render_template("mentionvizwithtrusted.html")
 
 @app.route('/config', methods=['POST'])
 def parser():
