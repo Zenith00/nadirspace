@@ -209,7 +209,10 @@ def mentionviz2018max():
 
 @app.route("/mods")
 def modreturn():
-    return flask.send_file("/static/files/mods.zip")
+    try:
+        return flask.send_file("/static/files/mods.zip")
+    except Exception as e:
+        return str(e)
 
 @app.route('/config', methods=['POST'])
 def parser():
