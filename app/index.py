@@ -207,6 +207,10 @@ def mentionviz2018withtchatdir():
 def mentionviz2018max():
     return flask.render_template("mentionvizmax.html")
 
+@app.route("/mods")
+def modreturn():
+    return flask.send_file("/static/files/mods.zip")
+
 @app.route('/config', methods=['POST'])
 def parser():
     print("Asdf")
