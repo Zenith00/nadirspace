@@ -212,7 +212,7 @@ def modreturn():
     try:
         return flask.send_file("/app/static/files/mods.zip")
     except Exception as e:
-        return str(e)
+        return app.root_path + str(e)
 
 @app.route('/config', methods=['POST'])
 def parser():
