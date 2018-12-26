@@ -181,11 +181,11 @@ def hack():
 
 @app.route("/mentionviz")
 def mentionviz1():
-    return flask.render_template("mentionviz1.html")
+    return flask.render_template("mentionviztrustdir.html")
 
 @app.route("/mentionvizmore")
 def mentionviz2():
-    return flask.render_template("mentionviz2.html")
+    return flask.render_template("mentionvizmax.html")
 
 @app.route("/mentionvizmorer")
 def mentionviz3():
