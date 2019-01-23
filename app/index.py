@@ -59,7 +59,6 @@ app.debug = True
 app.register_blueprint(sse, url_prefix="/logger")
 app.config["REDIS_URL"] = "redis://localhost"
 # app.config["TEMPLATES_AUTO_RELOAD"] = True
-# LOG_FILE = "/home/austin/develop/discbots/logfile.txt"
 MAX_LEN = -1000
 
 def check_auth(username, password,authtype):
@@ -155,12 +154,13 @@ def gear():
     print("Recieved")
     return flask.render_template('geartimer.html')
 
-# @app.route('/logstr')
-# @requires_auth("log")
-# def index():
-#     with open(LOG_FILE, 'r') as f:
-#         log_buffer = f.readlines()
-#     return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
+LOG_FILE = "/home/austin/develop/logfile.txt"
+
+@app.route('/logstr')
+def index():
+    with open(LOG_FILE, 'r') as f:
+        log_buffer = f.readlines()
+    return flask.render_template('logger.html', log_buffer=log_buffer[MAX_LEN:])
 
 @app.route('/config')
 def config():
