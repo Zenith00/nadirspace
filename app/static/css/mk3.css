@@ -1404,9 +1404,9 @@ footer .footnote .highlight {
         animation: popIn 1s both;
     }
 
-    .canvas {
-        background: #252934;
-    }
+    /*.canvas {*/
+        /*background: #252934;*/
+    /*}*/
 
     .button {
         font-size: 16pt;
