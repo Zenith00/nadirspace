@@ -44,6 +44,7 @@ def load_github_hooks(github_url='https://api.github.com'):
     except (KeyError, ValueError, requests.exceptions.ConnectionError):
         raise ServiceUnavailable('Error reaching GitHub')
 
+# s
 
 @app.route('/hooks', methods=['POST'])
 def hook():
