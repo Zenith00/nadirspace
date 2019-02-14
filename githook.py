@@ -51,7 +51,7 @@ def load_github_hooks(github_url='https://api.github.com'):
 def hook():
     print("Hook Recieved", flush=True)
     print(request.remote_addr, flush=True)
-    print(request.get("X-Real-IP"))
+    print(request.headers.get("X-Real-IP"))
     if not is_github_ip(request.remote_addr):
         raise Forbidden('Not from github')
 
