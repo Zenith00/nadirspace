@@ -9,6 +9,7 @@ from gevent.pywsgi import WSGIServer
 from werkzeug.exceptions import ServiceUnavailable, Forbidden
 
 app = Flask(__name__)
+
 def is_github_ip(ip_str):
     """Verify that an IP address is owned by GitHub."""
     if isinstance(ip_str, bytes):
@@ -44,7 +45,7 @@ def load_github_hooks(github_url='https://api.github.com'):
     except (KeyError, ValueError, requests.exceptions.ConnectionError):
         raise ServiceUnavailable('Error reaching GitHub')
 
-# s s
+# s s s
 
 @app.route('/hooks', methods=['POST'])
 def hook():
